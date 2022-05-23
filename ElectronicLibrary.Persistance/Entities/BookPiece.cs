@@ -9,6 +9,7 @@ namespace ElectronicLibrary.Persistance.Entities
     public class BookPiece : BaseEntity<Guid>
     {
         public string ReleaseYear { get; set; }
+        public bool IsAvailable { get; set; }
         public Guid BookId { get; set; }
 
         public virtual Book Book { get; set; }  

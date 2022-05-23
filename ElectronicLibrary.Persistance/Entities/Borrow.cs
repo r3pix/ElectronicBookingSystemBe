@@ -11,6 +11,7 @@ namespace ElectronicLibrary.Persistance.Entities
         public DateTime DateTo { get; set; }
         public float Penalty { get; set; }
         public float SumBorrowPrice { get; set; }
+        public bool IsDelivery { get; set; }
         public Guid UserId {get; set;}
 
         public virtual User User { get; set; }

@@ -1,3 +1,4 @@
+using ElectronicLibrary.Infrastructure.Middlewares;
 using ElectronicLibrary.Persistance;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace ElectronicLibrary.Api
 {
@@ -39,6 +41,8 @@ namespace ElectronicLibrary.Api
                 options.UseSqlServer(Configuration.GetConnectionString("Library"), 
                     x=>x.MigrationsAssembly("ElectronicLibrary.Persistance"));
             });
+
+            services.AddMediatR(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +54,8 @@ namespace ElectronicLibrary.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ElectronicLibrary.Api v1"));
             }
+
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.UseRouting();
 
