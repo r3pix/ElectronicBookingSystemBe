@@ -12,7 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ElectronicLibrary.Infrastructure\ElectronicLibrary.Infrastructure.csproj" />
     <ProjectReference Include="..\ElectronicLibrary.Persistance\ElectronicLibrary.Persistance.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="OperationData\Base\DeleteCommand\" />
+    <Folder Include="OperationData\Base\GetPageableQuery\" />
   </ItemGroup>
 
 </Project>

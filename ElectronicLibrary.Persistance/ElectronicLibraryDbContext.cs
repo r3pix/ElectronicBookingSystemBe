@@ -10,7 +10,7 @@ namespace ElectronicLibrary.Persistance
     public class ElectronicLibraryDbContext : DbContext
     {
 
-        //dodacsety i  changetracker
+        //dodacsety i  changetracker, przeciazyc savechanges
 
         public ElectronicLibraryDbContext(DbContextOptions<ElectronicLibraryDbContext> options) : base(options)
         {

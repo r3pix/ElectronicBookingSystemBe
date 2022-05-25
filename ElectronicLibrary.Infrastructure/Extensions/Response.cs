@@ -9,6 +9,18 @@ namespace ElectronicLibrary.Infrastructure.Extensions
 {
     public class Response<T>
     {
+        public Response()
+        {
+
+        }
+
+        public Response(T result)
+        {
+            Result = result;
+            Code = HttpStatusCode.OK;
+            IsError = false;
+        }
+
         public T Result { get; set; }
         public HttpStatusCode Code { get; set; }
         public string Message { get; set; }

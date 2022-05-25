@@ -11,28 +11,30 @@ namespace ElectronicLibrary.Api.Controllers
     [Route("api/[controller]")]
     public abstract class BaseController : ControllerBase
     {
+        private const int _queryResponse = 200;
+        private const int _commandResponse = 202;
         private readonly IMediator _mediator;
 
-        public BaseController(IMediator mediator)
+        protected BaseController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         //awaity bardzo wazne
 
-        public async Task<ActionResult> ExecuteCommand(Func<Task> command)
+        protected async Task<ActionResult> ExecuteCommand(Func<Task> command)
         {
             await command.Invoke();
             return Accepted();
         }
 
-        public async Task<ActionResult> ExecuteQuery<TResponse>(Func<Task<TResponse>> query)
+        protected async Task<ActionResult> ExecuteQuery<TResponse>(Func<Task<TResponse>> query)
         {
             var result = await query.Invoke();
             return Ok(result);
         }
 
-        public async Task<ActionResult> ExecuteCommandWithResult<TResponse>(Func<Task<TResponse>> command)
+        protected async Task<ActionResult> ExecuteCommandWithResult<TResponse>(Func<Task<TResponse>> command)
         {
             var result = await command.Invoke();
             return Accepted(result);
