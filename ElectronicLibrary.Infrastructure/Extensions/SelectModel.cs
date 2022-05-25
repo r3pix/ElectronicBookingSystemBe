@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Infrastructure.Extensions
 {
-    public class SelectModel<T>
+    public class SelectModel<TKey> where TKey : struct
     {
-        public T Id { get; set; }
+        public TKey Id { get; set; }
         public string Label{ get; set; }
     }
 }
