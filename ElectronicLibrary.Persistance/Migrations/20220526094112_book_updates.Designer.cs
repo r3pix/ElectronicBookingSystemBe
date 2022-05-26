@@ -4,14 +4,16 @@ using ElectronicLibrary.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ElectronicLibrary.Persistance.Migrations
 {
     [DbContext(typeof(ElectronicLibraryDbContext))]
-    partial class ElectronicLibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220526094112_book_updates")]
+    partial class book_updates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
