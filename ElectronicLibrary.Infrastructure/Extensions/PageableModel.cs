@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Infrastructure.Extensions
 {
-    public class PageableModel<T>
+    public class PageableModel<T> where T : class
     {
-        public List<T> Result { get; set; }
+        public PageableModel(IEnumerable<T> result, int count)
+        {
+            Result = result;
+            Total = count;
+        }
+
+        public IEnumerable<T> Result { get; set; }
         public int Total { get; set; }
     }
 }

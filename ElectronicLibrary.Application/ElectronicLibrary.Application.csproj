@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="OperationData\Base\DeleteCommand\" />
-    <Folder Include="OperationData\Base\GetPageableQuery\" />
   </ItemGroup>
 
 </Project>
