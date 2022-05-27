@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="OperationData\Base\DeleteCommand\" />
+    <Folder Include="OperationData\Base\GetAllQuery\" />
   </ItemGroup>
 
 </Project>
