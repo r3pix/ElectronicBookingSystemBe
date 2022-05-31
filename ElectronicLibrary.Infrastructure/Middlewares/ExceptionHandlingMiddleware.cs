@@ -16,8 +16,8 @@ namespace ElectronicLibrary.Infrastructure.Middlewares
         {
             try
             {
-                await next.Invoke(context);
-                //await next(context);
+             //   await next.Invoke(context);
+                await next(context);
             }
             catch (Exception ex)
             {
