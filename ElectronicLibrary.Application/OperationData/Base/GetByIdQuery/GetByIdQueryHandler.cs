@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ElectronicLibrary.Application.OperationData.Base.GetByIdQuery
 {
-    public class GetByIdQueryHandler<TKey, TEntity, TQuery, TViewModel> : IRequestHandler<TQuery, Response<TViewModel>> where TEntity : BaseEntity<TKey>
+    public abstract class GetByIdQueryHandler<TKey, TEntity, TQuery, TViewModel> : IRequestHandler<TQuery, Response<TViewModel>> where TEntity : BaseEntity<TKey>
         where TQuery : IGetByIdQuery<TKey, TViewModel> where TViewModel : class where TKey : struct
     {
         private readonly ElectronicLibraryDbContext _dbContext;
