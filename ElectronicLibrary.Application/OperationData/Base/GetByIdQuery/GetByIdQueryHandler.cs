@@ -20,7 +20,7 @@ namespace ElectronicLibrary.Application.OperationData.Base.GetByIdQuery
         private readonly IMapper _mapper;
         public DbSet<TEntity> DbSet;
 
-        public GetByIdQueryHandler(ElectronicLibraryDbContext dbContext, IMapper mapper)
+        protected GetByIdQueryHandler(ElectronicLibraryDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
