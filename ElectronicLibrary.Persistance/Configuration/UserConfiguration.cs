@@ -19,7 +19,8 @@ namespace ElectronicLibrary.Persistance.Configuration
         {
             builder.HasOne(x => x.Role).WithMany(x => x.Users).HasForeignKey(x => x.RoleId);
             builder.HasOne(x => x.Identity).WithOne(x => x.User).HasForeignKey<Identity>(x => x.UserId);
-            builder.HasMany(x=>x.Borrows).WithOne(x=>x.User).HasForeignKey(x => x.UserId);
+            builder.HasOne(x => x.Address).WithOne(x => x.User).HasForeignKey<Address>(x => x.UserId);
+            builder.HasMany(x=>x.Bookings).WithOne(x=>x.User).HasForeignKey(x => x.UserId);
             base.Configure(builder);
         }
     }

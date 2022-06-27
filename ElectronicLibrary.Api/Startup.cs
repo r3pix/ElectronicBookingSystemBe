@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using ElectronicLibrary.Infrastructure.Extensions;
 
 namespace ElectronicLibrary.Api
 {
@@ -41,6 +42,9 @@ namespace ElectronicLibrary.Api
                 options.UseSqlServer(Configuration.GetConnectionString("Library"), 
                     x=>x.MigrationsAssembly("ElectronicLibrary.Persistance"));
             });
+
+            services.AddInfrastructureServices();
+            services.AddConfigurationModels(Configuration);
 
             services.AddMediatR(typeof(Startup));
             services.AddAutoMapper(typeof(Startup));

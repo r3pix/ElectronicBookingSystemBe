@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Persistance.Configuration
 {
-    public class DeliveryAddressConfiguration : BaseEntityConfiguration<Guid,DeliveryAddress>
+    public class AddressConfiguration : BaseEntityConfiguration<Guid,Address>
     {
-        public DeliveryAddressConfiguration() :base("DeliveryAddress")
+        public AddressConfiguration() :base("Address")
         {
 
         }

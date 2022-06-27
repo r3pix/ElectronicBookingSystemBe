@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Persistance.Entities
 {
-    public abstract class BaseEntity<TKey> where TKey : struct
+    public abstract class BaseEntity
+    {
+
+    }
+
+    public abstract class BaseEntity<TKey> : BaseEntity where TKey : struct
     {
         public TKey Id { get; set; }
 

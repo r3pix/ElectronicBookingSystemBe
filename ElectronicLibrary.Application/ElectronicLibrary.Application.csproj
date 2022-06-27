@@ -17,9 +17,4 @@
     <ProjectReference Include="..\ElectronicLibrary.Persistance\ElectronicLibrary.Persistance.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="OperationData\Base\DeleteCommand\" />
-    <Folder Include="OperationData\Base\GetAllQuery\" />
-  </ItemGroup>
-
 </Project>

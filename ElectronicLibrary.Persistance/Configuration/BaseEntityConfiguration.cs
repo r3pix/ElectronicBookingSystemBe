@@ -22,6 +22,7 @@ namespace ElectronicLibrary.Persistance.Configuration
             builder.ToTable(tableName);
             builder.HasKey(x=>x.Id);
             //filtry?
+            builder.HasQueryFilter(x => x.IsActive);
         }
     }
 }
