@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ElectronicLibrary.Api.Controllers
 {
-    [ApiController]
+    //[ApiController]
     //[Authorize]
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     public abstract class BaseController : ControllerBase
     {
         private const int _queryResponse = 200;
@@ -38,6 +38,12 @@ namespace ElectronicLibrary.Api.Controllers
         {
             var result = await command.Invoke();
             return Accepted(result);
+        }
+
+        protected async Task<ActionResult> ExecuteFileDownload(Func<Task<(byte[],string)>> command)
+        {
+            var result = await command.Invoke();
+            return File(result.Item1, "application/octet-stream",result.Item2);
         }
     }
 }

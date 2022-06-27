@@ -11,7 +11,6 @@ namespace ElectronicLibrary.Domain.Entities
     {
         public string FileName { get; set; }
         public string UploadPath { get; set; }
-
-
+        public string PathFileName { get; set; }
     }
 }
