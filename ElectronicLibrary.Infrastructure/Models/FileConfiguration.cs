@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Infrastructure.Models
 {
+    /// <summary>
+    /// Class mapping Appsettings Section
+    /// </summary>
     public class FileConfiguration
     {
+        /// <summary>
+        /// File upload path
+        /// </summary>
         public string UploadPath { get; set; }
     }
 }

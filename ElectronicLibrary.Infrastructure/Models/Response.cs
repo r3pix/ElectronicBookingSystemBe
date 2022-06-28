@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Infrastructure.Extensions
 {
+    /// <summary>
+    /// Reponse class
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Response<T>
     {
         public Response()
@@ -21,9 +25,24 @@ namespace ElectronicLibrary.Infrastructure.Extensions
             IsError = false;
         }
 
+        /// <summary>
+        /// Response result
+        /// </summary>
         public T Result { get; set; }
+
+        /// <summary>
+        /// Http Status code
+        /// </summary>
         public HttpStatusCode Code { get; set; }
+
+        /// <summary>
+        /// Optional message
+        /// </summary>
         public string Message { get; set; }
+
+        /// <summary>
+        /// Error flag
+        /// </summary>
         public bool IsError { get; set; }
 
     }

@@ -10,8 +10,17 @@ using Microsoft.AspNetCore.Http;
 
 namespace ElectronicLibrary.Infrastructure.Middlewares
 {
+    /// <summary>
+    /// Middleware handilng all errors
+    /// </summary>
     public class ExceptionHandlingMiddleware : IMiddleware
     {
+        /// <summary>
+        /// Invokes next action and catches the exception
+        /// </summary>
+        /// <param name="context">Http Context</param>
+        /// <param name="next">Next delegate</param>
+        /// <returns></returns>
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             try
@@ -24,7 +33,12 @@ namespace ElectronicLibrary.Infrastructure.Middlewares
                 await HandleError(context, ex);
             }
         }
-
+        /// <summary>
+        /// Handles error and writes to response 
+        /// </summary>
+        /// <param name="context"> Http Context</param>
+        /// <param name="ex">Exception</param>
+        /// <returns></returns>
         private async Task HandleError(HttpContext context, Exception ex)
         {
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

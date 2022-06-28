@@ -10,8 +10,16 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Infrastructure.Extensions
 {
+    /// <summary>
+    /// Provides extensions for IServiceCollection
+    /// </summary>
     public static class ServiceCollectionExtension
     {
+        /// <summary>
+        /// Registers infrastructure services
+        /// </summary>
+        /// <param name="services">IServiceCollection</param>
+        /// <returns>IServiceCollection</returns>
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
             //services.AddTransient<IElectronicLibraryDbContext,ElectronicLibraryDbContext>();
@@ -19,6 +27,12 @@ namespace ElectronicLibrary.Infrastructure.Extensions
             return services;
         }
 
+        /// <summary>
+        /// Registers configurations from Appsettings.json
+        /// </summary>
+        /// <param name="services">IServiceCollection</param>
+        /// <param name="configuration">IConfiguration</param>
+        /// <returns>IServiceCollection</returns>
         public static IServiceCollection AddConfigurationModels(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton(configuration.GetSection("FileUpload").Get<FileConfiguration>());

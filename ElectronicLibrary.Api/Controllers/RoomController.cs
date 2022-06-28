@@ -1,13 +1,18 @@
-﻿using MediatR;
+﻿using ElectronicLibrary.Application.CQRS.Room.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Api.Controllers
 {
+    /// <summary>
+    /// Controller handling requests for Room entity
+    /// </summary>
     [ApiController]
     // [Authorize]
     [Route("api/[controller]")]
@@ -17,7 +22,14 @@ namespace ElectronicLibrary.Api.Controllers
         {
         }
 
-
-
+        /// <summary>
+        /// Method executing "Create" command
+        /// </summary>
+        /// <param name="command">Command to execute</param>
+        /// <returns>Created (202) status</returns>
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
+        public async Task<ActionResult> Create([FromForm] AddRoomCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
     }
 }

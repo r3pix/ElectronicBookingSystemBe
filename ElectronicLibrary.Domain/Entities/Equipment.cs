@@ -7,12 +7,24 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Domain.Entities
 {
+    /// <summary>
+    /// Entity class modelling equipment
+    /// </summary>
     public class Equipment : BaseEntity<Guid>
     {
+        /// <summary>
+        /// Name of the equipment
+        /// </summary>
         public string Name { get; set; }
-        public Guid FileId { get; set; }
 
+        /// <summary>
+        /// Photo of equipment
+        /// </summary>
         public virtual File File { get; set; }
+
+        /// <summary>
+        /// Reference to booking class
+        /// </summary>
         public virtual IEnumerable<Booking> Bookings { get; set; }
     }
 }

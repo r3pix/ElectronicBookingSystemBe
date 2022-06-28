@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Infrastructure.Services
 {
+    /// <summary>
+    /// Service class for maintaining files
+    /// </summary>
     public class FileService : IFileService
     {
+        /// <summary>
+        /// Saves file in provided path
+        /// </summary>
+        /// <param name="path">Path to save</param>
+        /// <param name="file">File to save</param>
+        /// <returns></returns>
         public async Task Save(string path, IFormFile file)
         {
             if (!Directory.Exists(path))
@@ -23,6 +32,11 @@ namespace ElectronicLibrary.Infrastructure.Services
             await stream.DisposeAsync();
         }
 
+        /// <summary>
+        /// Method reading all file bytes from provided path
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <returns>Byte array</returns>
         public async Task<byte[]> ReadFileBytes(string path) =>
             await File.ReadAllBytesAsync(path);
     }

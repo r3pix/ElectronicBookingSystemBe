@@ -15,6 +15,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using ElectronicLibrary.Infrastructure.Extensions;
+using FluentValidation.AspNetCore;
+using ElectronicLibrary.Application.Validators;
+using FluentValidation;
 
 namespace ElectronicLibrary.Api
 {
@@ -45,9 +48,11 @@ namespace ElectronicLibrary.Api
 
             services.AddInfrastructureServices();
             services.AddConfigurationModels(Configuration);
+            
 
             services.AddMediatR(typeof(Startup));
             services.AddAutoMapper(typeof(Startup));
+            services.AddValidatorsFromAssemblyContaining<AddRoomCommandValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

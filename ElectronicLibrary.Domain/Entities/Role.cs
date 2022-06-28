@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Persistance.Entities
 {
+    /// <summary>
+    /// Entity class modelling user roles
+    /// </summary>
     public class Role : BaseEntity<Guid>
     {
+        /// <summary>
+        /// Name of the role
+        /// </summary>
         public string Name { get; set; }
         
+        /// <summary>
+        /// Reference to user class
+        /// </summary>
         public virtual IEnumerable<User> Users { get; set; }
 
     }
