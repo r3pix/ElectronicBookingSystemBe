@@ -1,7 +1,9 @@
-﻿using ElectronicLibrary.Infrastructure.Models;
-using ElectronicLibrary.Infrastructure.Repositories;
+﻿using ElectronicLibrary.Application.Interfaces;
+using ElectronicLibrary.Application.Repositories;
+using ElectronicLibrary.Infrastructure.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,7 @@ namespace ElectronicLibrary.Infrastructure.Extensions
         {
             //services.AddTransient<IElectronicLibraryDbContext,ElectronicLibraryDbContext>();
             services.AddTransient(typeof(IRepository<>),typeof(Repository<>));
+            services.AddTransient<IDecorationRepository,DecorationRepository>();
             return services;
         }
 
@@ -35,7 +38,7 @@ namespace ElectronicLibrary.Infrastructure.Extensions
         /// <returns>IServiceCollection</returns>
         public static IServiceCollection AddConfigurationModels(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton(configuration.GetSection("FileUpload").Get<FileConfiguration>());
+            services.AddSingleton(configuration.GetSection("FileConfiguration").Get<FileConfiguration>());
             return services;
         }
 

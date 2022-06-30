@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectronicLibrary.Infrastructure.Repositories
+namespace ElectronicLibrary.Application.Repositories
 {
     public class RoomRepository : Repository<Room>
     {

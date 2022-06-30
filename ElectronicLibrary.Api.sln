@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32407.343
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicLibrary.Api", "ElectronicLibrary.Api\ElectronicLibrary.Api.csproj", "{2271863C-BCAB-42E4-AED3-0114159BE315}"
 EndProject
@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicLibrary.Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicLibrary.Application", "ElectronicLibrary.Application\ElectronicLibrary.Application.csproj", "{3146809B-4D16-4659-92BE-7B592090D294}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicLibrary.Domain", "ElectronicLibrary.Domain\ElectronicLibrary.Domain.csproj", "{9283739D-0CAD-43CE-A876-44A70AC5164A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicLibrary.Domain", "ElectronicLibrary.Domain\ElectronicLibrary.Domain.csproj", "{9283739D-0CAD-43CE-A876-44A70AC5164A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

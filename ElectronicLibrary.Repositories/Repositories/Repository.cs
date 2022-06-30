@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using ElectronicLibrary.Persistance;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using ElectronicLibrary.Infrastructure.Repositories;
 
-namespace ElectronicLibrary.Infrastructure.Repositories
+namespace ElectronicLibrary.Application.Repositories
 {
     /// <summary>
     /// Generic repository containing base actions

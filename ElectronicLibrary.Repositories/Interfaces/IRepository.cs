@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ElectronicLibrary.Infrastructure.Repositories
+namespace ElectronicLibrary.Repositories.Interfaces
 {
     /// <summary>
     /// Interface for Repository class
