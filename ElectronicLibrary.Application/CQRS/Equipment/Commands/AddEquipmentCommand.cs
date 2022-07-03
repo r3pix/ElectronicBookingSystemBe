@@ -1,16 +1,14 @@
-﻿using ElectronicLibrary.Persistance.Entities;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectronicLibrary.Domain.Entities
+namespace ElectronicLibrary.Application.CQRS.Equipment.Commands
 {
-    /// <summary>
-    /// Entity class modelling equipment
-    /// </summary>
-    public class Equipment : BaseEntity<Guid>
+    public class AddEquipmentCommand : IRequest
     {
         /// <summary>
         /// Name of the equipment
@@ -25,11 +23,6 @@ namespace ElectronicLibrary.Domain.Entities
         /// <summary>
         /// Photo of equipment
         /// </summary>
-        public virtual File File { get; set; }
-
-        /// <summary>
-        /// Reference to booking class
-        /// </summary>
-        public virtual IEnumerable<Booking> Bookings { get; set; }
+        public IFormFile File { get; set; }
     }
 }

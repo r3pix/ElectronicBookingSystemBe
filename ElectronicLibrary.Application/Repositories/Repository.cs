@@ -61,6 +61,18 @@ namespace ElectronicLibrary.Application.Repositories
         }
 
         /// <summary>
+        /// Updates the entity
+        /// </summary>
+        /// <param name="entity">The <see cref="TEntity"/> entity</param>
+        /// <returns>The <see cref="TEntity"/> entity</returns>
+        public async Task<TEntity> Update(TEntity entity)
+        {
+            _dbContext.Set<TEntity>().Update(entity);
+            await _dbContext.SaveChangesAsync();
+            return entity;
+        }
+
+        /// <summary>
         /// Deletes the entity
         /// </summary>
         /// <typeparam name="TKey">Type of key</typeparam>

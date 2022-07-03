@@ -1,17 +1,14 @@
-﻿using ElectronicLibrary.Persistance.Entities;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectronicLibrary.Domain.Entities
+namespace ElectronicLibrary.Application.CQRS.Service.Commands
 {
-    /// <summary>
-    /// Entity class modelling service
-    /// </summary>
-    //pakiet obsługi
-    public class Service : BaseEntity<Guid>
+    public class AddServiceCommand : IRequest
     {
         /// <summary>
         /// Name of the service
@@ -28,10 +25,5 @@ namespace ElectronicLibrary.Domain.Entities
         /// </summary>
         public float Cost { get; set; }
 
-
-        /// <summary>
-        /// Reference to booking class
-        /// </summary>
-        public virtual IEnumerable<Booking> Bookings { get; set; }
     }
 }

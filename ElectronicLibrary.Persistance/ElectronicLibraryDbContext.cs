@@ -14,6 +14,8 @@ namespace ElectronicLibrary.Persistance
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Decoration> Decorations { get; set; }
+        public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<Service> Services { get; set; }
         //dodacsety i  changetracker, przeciazyc savechanges
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

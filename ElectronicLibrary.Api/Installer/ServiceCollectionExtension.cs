@@ -27,6 +27,9 @@ namespace ElectronicLibrary.Infrastructure.Extensions
             //services.AddTransient<IElectronicLibraryDbContext,ElectronicLibraryDbContext>();
             services.AddTransient(typeof(IRepository<>),typeof(Repository<>));
             services.AddTransient<IDecorationRepository,DecorationRepository>();
+            services.AddTransient<IEquipmentRepository,EquipmentRepository>();
+            services.AddTransient<IServiceRepository, ServiceRepository>();
+
             return services;
         }
 

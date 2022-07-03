@@ -1,16 +1,13 @@
-﻿using ElectronicLibrary.Persistance.Entities;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectronicLibrary.Domain.Entities
+namespace ElectronicLibrary.Application.CQRS.Booking.Commands
 {
-    /// <summary>
-    /// Entity class modelling signle booking
-    /// </summary>
-    public class Booking : BaseEntity<Guid>
+    public class AddBookingCommand : IRequest
     {
         /// <summary>
         /// Name of the booking
@@ -66,30 +63,5 @@ namespace ElectronicLibrary.Domain.Entities
         /// Reference to user entity
         /// </summary>
         public Guid UserId { get; set; }
-
-        /// <summary>
-        /// Reference to decoration entity
-        /// </summary>
-        public virtual Decoration Decoration { get; set; }
-
-        /// <summary>
-        /// Reference to equipment entity
-        /// </summary>
-        public virtual Equipment Equipment { get; set; }
-
-        /// <summary>
-        /// Reference to room entity
-        /// </summary>
-        public virtual Room Room { get; set; }
-
-        /// <summary>
-        /// Reference to service entity
-        /// </summary>
-        public virtual Service Service { get; set; }
-
-        /// <summary>
-        /// Reference to user entity
-        /// </summary>
-        public virtual User User { get; set; }
     }
 }

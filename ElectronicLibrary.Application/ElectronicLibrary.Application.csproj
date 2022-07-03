@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="CQRS\Booking\Queries\" />
     <Folder Include="CQRS\Room\Queries\" />
   </ItemGroup>
 

@@ -48,6 +48,11 @@ namespace ElectronicLibrary.Domain.Entities
         public string Description { get; set; }
 
         /// <summary>
+        /// Cost of the room
+        /// </summary>
+        public float Cost { get; set; }
+
+        /// <summary>
         /// Picture of the room
         /// </summary>
         public virtual File File { get; set; }

@@ -18,6 +18,11 @@ namespace ElectronicLibrary.Domain.Entities
         public string Name { get; set; }
 
         /// <summary>
+        /// Cost of the decoration
+        /// </summary>
+        public float Cost { get; set; }
+
+        /// <summary>
         /// Photo of Decoration
         /// </summary>
         public virtual File File { get; set; }

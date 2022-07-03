@@ -48,6 +48,12 @@ namespace ElectronicLibrary.Application.CQRS.Room.Commands
         /// </summary>
         public string Description { get; set; }
 
+
+        /// <summary>
+        /// Cost of the room
+        /// </summary>
+        public float Cost { get; set; }
+
         /// <summary>
         /// Picture of the room
         /// </summary>

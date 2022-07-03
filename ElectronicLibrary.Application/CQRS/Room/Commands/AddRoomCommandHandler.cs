@@ -40,7 +40,7 @@ namespace ElectronicLibrary.Application.CQRS.Room.Commands
             {
                 FileName = request.File.FileName,
                 PathFileName = Path.Combine(_configuration.UploadPath, entity.Id.ToString(), request.File.FileName),
-                UploadPath = _configuration.UploadPath,
+                UploadPath = Path.Combine(_configuration.UploadPath,entity.Id.ToString()),
                 RoomId = entity.Id
             });
 

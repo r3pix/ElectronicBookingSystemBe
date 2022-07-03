@@ -46,18 +46,19 @@ namespace ElectronicLibrary.Application.CQRS.Decoration.Commands
         {
             var entity = await _decorationRepository.Save(new Domain.Entities.Decoration()
             {
-                Name = request.Name
+                Name = request.Name,
+                Cost = request.Cost
             });
 
             await _fileRepository.Save(new Domain.Entities.File()
             {
                 FileName = request.File.FileName,
-                UploadPath = _fileConfiguration.UploadPath,
-                PathFileName = Path.Combine(_fileConfiguration.UploadPath,request.File.FileName),
+                UploadPath = Path.Combine(_fileConfiguration.UploadPath,entity.Id.ToString()),
+                PathFileName = Path.Combine(_fileConfiguration.UploadPath,entity.Id.ToString(),request.File.FileName),
                 DecorationId = entity.Id
             });
 
-            await _fileService.Save(_fileConfiguration.UploadPath,request.File);
+            await _fileService.Save(Path.Combine(_fileConfiguration.UploadPath,entity.Id.ToString()),request.File);
 
             return default;
 
