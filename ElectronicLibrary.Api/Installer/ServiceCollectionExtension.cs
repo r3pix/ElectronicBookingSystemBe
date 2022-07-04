@@ -29,6 +29,7 @@ namespace ElectronicLibrary.Infrastructure.Extensions
             services.AddTransient<IDecorationRepository,DecorationRepository>();
             services.AddTransient<IEquipmentRepository,EquipmentRepository>();
             services.AddTransient<IServiceRepository, ServiceRepository>();
+            services.AddTransient<IRoomRepository, RoomRepository>();
 
             return services;
         }

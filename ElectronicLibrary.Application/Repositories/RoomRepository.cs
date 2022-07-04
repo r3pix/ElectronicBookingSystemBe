@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ElectronicLibrary.Application.Interfaces;
 using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Extensions;
 using ElectronicLibrary.Persistance;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Application.Repositories
 {
-    public class RoomRepository : Repository<Room>
+    public class RoomRepository : Repository<Room>, IRoomRepository
     {
         public RoomRepository(ElectronicLibraryDbContext dbContext, IMapper mapper): base(dbContext,mapper)
         {

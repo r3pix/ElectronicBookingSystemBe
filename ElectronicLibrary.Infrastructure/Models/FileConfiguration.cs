@@ -15,5 +15,10 @@ namespace ElectronicLibrary.Infrastructure.Models
         /// File upload path
         /// </summary>
         public string UploadPath { get; set; }
+
+        /// <summary>
+        /// URL for File Controller
+        /// </summary>
+        public string FileControllerAddress { get; set; }
     }
 }

@@ -1,4 +1,7 @@
 ﻿using ElectronicLibrary.Application.CQRS.Room.Commands;
+using ElectronicLibrary.Application.CQRS.Room.Queries;
+using ElectronicLibrary.Infrastructure.Extensions;
+using ElectronicLibrary.Infrastructure.Models.Room;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,5 +34,10 @@ namespace ElectronicLibrary.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<ActionResult> Create([FromForm] AddRoomCommand command) =>
             await ExecuteCommand(async () => await _mediator.Send(command));
+
+        [HttpGet("list")]
+        [ProducesResponseType(typeof(Response<IEnumerable<RoomListModel>>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetRoomList([FromQuery] GetRoomListQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
     }
 }
