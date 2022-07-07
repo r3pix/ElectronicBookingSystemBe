@@ -1,5 +1,7 @@
-﻿using ElectronicLibrary.Persistance.Entities;
+﻿using ElectronicLibrary.Domain.Entities;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Application.Interfaces
@@ -48,5 +50,7 @@ namespace ElectronicLibrary.Application.Interfaces
         /// <param name="model">Update data</param>
         /// <returns>Updated entity</returns>
         Task<TEntity> Update<TKey, TModel>(TKey id, TModel model);
+
+        Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> expression);
     }
 }

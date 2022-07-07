@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectronicLibrary.Persistance.Entities
+namespace ElectronicLibrary.Domain.Entities
 {
     /// <summary>
     /// Used for polymorphism

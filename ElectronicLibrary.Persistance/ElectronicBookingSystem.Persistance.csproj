@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ElectronicLibrary.Domain\ElectronicLibrary.Domain.csproj" />
+    <ProjectReference Include="..\ElectronicLibrary.Domain\ElectronicBookingSystem.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

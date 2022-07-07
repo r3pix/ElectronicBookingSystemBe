@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Api.Controllers
@@ -19,7 +20,8 @@ namespace ElectronicLibrary.Api.Controllers
         }
 
         [HttpGet("{Id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetFile([FromRoute] GetFileByIdQuery query) =>
-            await ExecuteQuery(async () => await _mediator.Send(query));
+            await ExecuteFileDownload(async () => await _mediator.Send(query));
     }
 }

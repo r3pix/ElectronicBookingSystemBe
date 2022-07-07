@@ -16,7 +16,22 @@ namespace ElectronicLibrary.Application.Profiles
     /// </summary>
     public class RoomAutomapperProfile : Profile
     {
-        public RoomAutomapperProfile(FileConfiguration fileConfiguration)
+        public class SetFileDownloadAddressAction : IMappingAction<Room, RoomListModel>
+        {
+            private readonly FileConfiguration _fileConfiguration;
+
+            public SetFileDownloadAddressAction(FileConfiguration fileConfiguration)
+            {
+                _fileConfiguration = fileConfiguration;
+            }
+
+            public void Process(Room source, RoomListModel destination, ResolutionContext context)
+            {
+                destination.FileAddress = String.Format(_fileConfiguration.FileControllerAddress, source.File.Id);
+            }
+        }
+
+        public RoomAutomapperProfile()
         {
             CreateMap<AddRoomCommand, Room>()
                 .ForMember(dest => dest.Height, opt => opt.MapFrom(src => src.Height))
@@ -27,7 +42,7 @@ namespace ElectronicLibrary.Application.Profiles
                 .ForMember(dest => dest.File, opt => opt.Ignore());
 
             CreateMap<Room, RoomListModel>()
-                .ForMember(dest => dest.FileAddress, opt => opt.MapFrom(x => String.Format(fileConfiguration.FileControllerAddress, x.File.Id)));
+                .AfterMap<SetFileDownloadAddressAction>(); //trzeba dodac include
         }
     }
 }

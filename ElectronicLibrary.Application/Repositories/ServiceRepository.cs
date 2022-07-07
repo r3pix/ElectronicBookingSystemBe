@@ -15,7 +15,7 @@ namespace ElectronicLibrary.Application.Repositories
 {
     public class ServiceRepository : Repository<Service>, IServiceRepository
     {
-        public ServiceRepository(ElectronicLibraryDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public ServiceRepository(ElectronicBookingSystemDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 

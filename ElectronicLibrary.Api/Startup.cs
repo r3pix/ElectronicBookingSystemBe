@@ -18,6 +18,12 @@ using ElectronicLibrary.Infrastructure.Extensions;
 using FluentValidation.AspNetCore;
 using ElectronicLibrary.Application.Validators;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
+using ElectronicLibrary.Domain.Entities;
+using ElectronicLibrary.Application.CQRS.User.Commands;
+using ElectronicLibrary.Application.Profiles;
+using AutoMapper;
+using ElectronicLibrary.Infrastructure.Models;
 
 namespace ElectronicLibrary.Api
 {
@@ -33,26 +39,35 @@ namespace ElectronicLibrary.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ElectronicLibrary.Api", Version = "v1" });
             });
 
-            services.AddDbContext<ElectronicLibraryDbContext>(options =>
+            services.ConfigureSecurity(Configuration);
+            services.AddCustomCors(Configuration);
+            services.AddSingleton<ExceptionHandlingMiddleware>();
+
+            services.AddDbContext<ElectronicBookingSystemDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Library"), 
-                    x=>x.MigrationsAssembly("ElectronicLibrary.Persistance"));
+                    x=>x.MigrationsAssembly("ElectronicBookingSystem.Persistance"));
             });
 
             services.AddInfrastructureServices();
             services.AddConfigurationModels(Configuration);
-            
+            services.AddScoped<IPasswordHasher<User>,PasswordHasher<User>>();
 
-            services.AddMediatR(typeof(Startup));
-            services.AddAutoMapper(typeof(Startup));
-            services.AddValidatorsFromAssemblyContaining<AddRoomCommandValidator>();
+            services.AddMediatR(typeof(RegisterUserCommand).Assembly); //assembly where handlers are
+
+            services.AddAutoMapper(typeof(UserAutomapperProfile).Assembly);
+            /*services.AddSingleton(provider => new MapperConfiguration(cfg => //mapper for dependencyInjection
+            {
+                cfg.AddProfile(new RoomAutomapperProfile(provider.GetRequiredService<FileConfiguration>()));
+                cfg.AddMaps(typeof(UserAutomapperProfile).Assembly);
+            }));*/
+            services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<RegisterUserValidator>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +83,9 @@ namespace ElectronicLibrary.Api
             app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.UseRouting();
+            app.UseCors("AllowedHosts");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -15,7 +15,7 @@ namespace ElectronicLibrary.Application.Repositories
 {
     public class DecorationRepository : Repository<Decoration>, IDecorationRepository
     {
-        public DecorationRepository(ElectronicLibraryDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public DecorationRepository(ElectronicBookingSystemDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 

@@ -9,5 +9,6 @@ namespace ElectronicLibrary.Application.Interfaces
 {
     public interface IRoomRepository : IRepository<Room>
     {
+        new Task<IEnumerable<Room>> GetAll();
     }
 }

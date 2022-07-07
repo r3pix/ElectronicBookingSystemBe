@@ -15,7 +15,7 @@ namespace ElectronicLibrary.Application.Repositories
 {
     public class EquipmentRepository : Repository<Equipment>, IEquipmentRepository
     {
-        public EquipmentRepository(ElectronicLibraryDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public EquipmentRepository(ElectronicBookingSystemDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 
