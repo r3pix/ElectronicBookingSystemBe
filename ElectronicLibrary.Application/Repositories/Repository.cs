@@ -105,8 +105,10 @@ namespace ElectronicLibrary.Application.Repositories
         public virtual async Task<TEntity> GetById<TKey>(TKey id) =>
             await _dbContext.Set<TEntity>().FindAsync(id);
 
-
-
+        /*
+        public virtual async Task<TEntity> GetById<TKey>(TKey id, Expression<Func<TEntity, object>> includeMember) =>
+            await _dbContext.Set<TEntity>().Include(includeMember).FindAsync();
+        */
         public virtual async Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> expression) =>
             await _dbContext.Set<TEntity>().Where(expression).FirstOrDefaultAsync();
 

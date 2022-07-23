@@ -1,7 +1,10 @@
-﻿using ElectronicLibrary.Application.CQRS.Equipment.Commands;
+﻿using ElectronicBookingSystem.Application.CQRS.Decoration.Queries;
+using ElectronicBookingSystem.Infrastructure.Models.Equipment;
+using ElectronicLibrary.Application.CQRS.Equipment.Commands;
 using ElectronicLibrary.Application.CQRS.Equipment.Queries;
 using ElectronicLibrary.Infrastructure.Extensions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,7 +16,7 @@ namespace ElectronicLibrary.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class EquimpmentController : BaseController
     {
         public EquimpmentController(IMediator mediator) :base(mediator)
@@ -28,6 +31,11 @@ namespace ElectronicLibrary.Api.Controllers
         [HttpGet("GetForSelect")]
         [ProducesResponseType(typeof(Response<IEnumerable<SelectModel<Guid>>>),(int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetForSelect([FromQuery] GetEquipmentForSelectQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
+
+        [HttpGet("{Id}")]
+        [ProducesResponseType(typeof(Response<EquipmentModel>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetById([FromRoute] GetDecorationByIdQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
     }
 }

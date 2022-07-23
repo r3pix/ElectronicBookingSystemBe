@@ -27,7 +27,7 @@ namespace ElectronicLibrary.Application.Profiles
 
             public void Process(Room source, RoomListModel destination, ResolutionContext context)
             {
-                destination.FileAddress = String.Format(_fileConfiguration.FileControllerAddress, source.File.Id);
+                destination.FileAddress = string.Format(_fileConfiguration.FileControllerAddress, source.File.Id);
             }
         }
 

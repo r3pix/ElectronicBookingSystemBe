@@ -47,6 +47,7 @@ namespace ElectronicLibrary.Api
 
             services.ConfigureSecurity(Configuration);
             services.AddCustomCors(Configuration);
+            services.AddHttpContextAccessor();
             services.AddSingleton<ExceptionHandlingMiddleware>();
 
             services.AddDbContext<ElectronicBookingSystemDbContext>(options =>

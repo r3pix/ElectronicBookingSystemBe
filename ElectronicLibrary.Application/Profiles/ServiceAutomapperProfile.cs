@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Infrastructure.Models.Service;
 using ElectronicLibrary.Application.CQRS.Service.Commands;
 using ElectronicLibrary.Domain.Entities;
 using System;
@@ -13,7 +14,8 @@ namespace ElectronicLibrary.Application.Profiles
     {
         public ServiceAutomapperProfile()
         {
-            CreateMap<AddServiceCommand, Service>();    
+            CreateMap<AddServiceCommand, Service>();
+            CreateMap<Service, ServiceModel>();
         }
     }
 }

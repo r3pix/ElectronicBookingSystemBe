@@ -17,7 +17,7 @@ namespace ElectronicLibrary.Api.Controllers
     /// Controller handling requests for Room entity
     /// </summary>
     [ApiController]
-    // [Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     public class RoomController : BaseController
     {

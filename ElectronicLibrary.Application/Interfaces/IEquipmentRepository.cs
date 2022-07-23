@@ -10,6 +10,6 @@ namespace ElectronicLibrary.Application.Interfaces
     public interface IEquipmentRepository : IRepository<Equipment>
     {
         Task<IEnumerable<SelectModel<Guid>>> GetForSelect(GetEquipmentForSelectQuery request);
-            
+        Task<Equipment> GetById(Guid Id);
     }
 }

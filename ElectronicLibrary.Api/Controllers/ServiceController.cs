@@ -1,7 +1,10 @@
-﻿using ElectronicLibrary.Application.CQRS.Service.Commands;
+﻿using ElectronicBookingSystem.Application.CQRS.Service.Queries;
+using ElectronicBookingSystem.Infrastructure.Models.Service;
+using ElectronicLibrary.Application.CQRS.Service.Commands;
 using ElectronicLibrary.Application.CQRS.Service.Queries;
 using ElectronicLibrary.Infrastructure.Extensions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections;
@@ -13,7 +16,7 @@ namespace ElectronicLibrary.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class ServiceController : BaseController
     {
         public ServiceController(IMediator mediator) : base(mediator)
@@ -28,6 +31,11 @@ namespace ElectronicLibrary.Api.Controllers
         [HttpGet("GetForSelect")]
         [ProducesResponseType(typeof(Response<IEnumerable<SelectModel<Guid>>>),(int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetForSelect([FromQuery] GetServicesForSelectQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
+
+        [HttpGet("{Id}")]
+        [ProducesResponseType(typeof(Response<ServiceModel>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetById([FromRoute] GetServiceByIdQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
     }
 }

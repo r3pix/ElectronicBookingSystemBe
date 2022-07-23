@@ -11,20 +11,6 @@ namespace ElectronicLibrary.Domain.Entities
     /// </summary>
     public abstract class BaseEntity
     {
-
-    }
-
-    /// <summary>
-    /// BaseEntity class modelling essential fields of every entity
-    /// </summary>
-    /// <typeparam name="TKey">Type of the key in the entity</typeparam>
-    public abstract class BaseEntity<TKey> : BaseEntity where TKey : struct
-    {
-        /// <summary>
-        /// Key of the entity
-        /// </summary>
-        public TKey Id { get; set; }
-
         /// <summary>
         /// Date of creation
         /// </summary>
@@ -44,6 +30,18 @@ namespace ElectronicLibrary.Domain.Entities
         /// Email of the last modificator
         /// </summary>
         public string LMEmail { get; set; }
+    }
+
+    /// <summary>
+    /// BaseEntity class modelling essential fields of every entity
+    /// </summary>
+    /// <typeparam name="TKey">Type of the key in the entity</typeparam>
+    public abstract class BaseEntity<TKey> : BaseEntity where TKey : struct
+    {
+        /// <summary>
+        /// Key of the entity
+        /// </summary>
+        public TKey Id { get; set; }
 
         /// <summary>
         /// Flag used to determine whether entity is active

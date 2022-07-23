@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ElectronicLibrary.Domain\ElectronicBookingSystem.Domain.csproj" />
-    <ProjectReference Include="..\ElectronicLibrary.Persistance\ElectronicBookingSystem.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

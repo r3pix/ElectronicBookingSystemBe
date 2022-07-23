@@ -1,4 +1,6 @@
-﻿using ElectronicLibrary.Application.Interfaces;
+﻿using ElectronicBookingSystem.Infrastructure.Interfaces;
+using ElectronicBookingSystem.Infrastructure.Services;
+using ElectronicLibrary.Application.Interfaces;
 using ElectronicLibrary.Application.Repositories;
 using ElectronicLibrary.Infrastructure.Models;
 using ElectronicLibrary.Infrastructure.Services;
@@ -27,13 +29,15 @@ namespace ElectronicLibrary.Infrastructure.Extensions
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
             //services.AddTransient<IElectronicLibraryDbContext,ElectronicLibraryDbContext>();
-            services.AddTransient(typeof(IRepository<>),typeof(Repository<>));
-            services.AddTransient<IDecorationRepository,DecorationRepository>();
-            services.AddTransient<IEquipmentRepository,EquipmentRepository>();
-            services.AddTransient<IServiceRepository, ServiceRepository>();
-            services.AddTransient<IRoomRepository, RoomRepository>();
-            services.AddTransient<IUserRepository,UserRepository>();
-            services.AddTransient<IFileService,FileService>();
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>))
+            .AddTransient<IDecorationRepository, DecorationRepository>()
+            .AddTransient<IEquipmentRepository, EquipmentRepository>()
+            .AddTransient<IServiceRepository, ServiceRepository>()
+            .AddTransient<IRoomRepository, RoomRepository>()
+            .AddTransient<IUserRepository, UserRepository>()
+            .AddTransient<IFileService, FileService>()
+            .AddTransient<ICurrentUserService, CurrentUserService>();
+
         }
 
         /// <summary>

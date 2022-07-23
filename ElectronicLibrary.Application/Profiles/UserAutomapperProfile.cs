@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Infrastructure.Models.User;
 using ElectronicLibrary.Application.CQRS.User.Commands;
 using ElectronicLibrary.Domain.Entities;
 using System;
@@ -28,6 +29,13 @@ namespace ElectronicLibrary.Application.Profiles
                     dest.Identity.Name = src.Name;
                     dest.Identity.LastName = src.Name;
                 });
+
+            CreateMap<User, UserData>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.Identity.LastName))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Identity.Name))
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.Name));
         }
     }
 }

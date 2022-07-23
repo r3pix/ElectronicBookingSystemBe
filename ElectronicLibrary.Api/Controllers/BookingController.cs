@@ -9,7 +9,7 @@ namespace ElectronicLibrary.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class BookingController : BaseController
     {
         public BookingController(IMediator mediator) : base(mediator)

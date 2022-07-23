@@ -10,5 +10,6 @@ namespace ElectronicLibrary.Application.Interfaces
     public interface IDecorationRepository : IRepository<Decoration>
     {
         Task<IEnumerable<SelectModel<Guid>>> GetForSelect(GetDecorationsForSelectQuery request);
+        Task<Decoration> GetById(Guid Id);
     }
 }

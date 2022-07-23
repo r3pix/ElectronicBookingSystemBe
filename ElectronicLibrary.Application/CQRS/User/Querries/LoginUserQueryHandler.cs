@@ -47,6 +47,7 @@ namespace ElectronicLibrary.Application.CQRS.User.Querries
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Name, user.Identity.Name),
                     new Claim(ClaimTypes.GivenName, user.Identity.LastName),
                     new Claim(ClaimTypes.Role, user.Role.Name)

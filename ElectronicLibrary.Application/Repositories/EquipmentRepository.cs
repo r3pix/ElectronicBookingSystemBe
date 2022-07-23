@@ -22,5 +22,7 @@ namespace ElectronicLibrary.Application.Repositories
         public async Task<IEnumerable<SelectModel<Guid>>> GetForSelect(GetEquipmentForSelectQuery request) =>
            await _dbContext.Equipment.GetForSelect(request.FilterWords).ToListAsync();
 
+        public async Task<Equipment> GetById(Guid Id) =>
+            await _dbContext.Equipment.Include(x => x.File).FirstOrDefaultAsync(x => x.Id == Id);
     }
 }
