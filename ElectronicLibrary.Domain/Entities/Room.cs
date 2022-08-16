@@ -1,4 +1,5 @@
-﻿using ElectronicLibrary.Domain.Entities;
+﻿using ElectronicBookingSystem.Domain.Entities;
+using ElectronicLibrary.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,8 @@ namespace ElectronicLibrary.Domain.Entities
         /// </summary>
         public float Cost { get; set; }
 
+        public Guid CategoryId { get; set;  }
+
         /// <summary>
         /// Picture of the room
         /// </summary>
@@ -61,5 +64,7 @@ namespace ElectronicLibrary.Domain.Entities
         /// Reference to booking class
         /// </summary>
         public virtual IEnumerable<Booking> Bookings { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 }

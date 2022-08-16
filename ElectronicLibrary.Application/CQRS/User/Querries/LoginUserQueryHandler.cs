@@ -54,7 +54,9 @@ namespace ElectronicLibrary.Application.CQRS.User.Querries
 
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Issuer = _configuration["JWTConfiguration:Issuer"],
+                Audience = _configuration["JWTConfiguration:Audience"]
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);

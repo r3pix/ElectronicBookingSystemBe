@@ -48,9 +48,8 @@ namespace ElectronicLibrary.Infrastructure.Models.Room
         /// </summary>
         public float Cost { get; set; }
 
-        /// <summary>
-        /// Address of corresponding file
-        /// </summary>
-        public string FileAddress { get; set; }
+       public Guid FileId { get; set; }
+
+
     }
 }

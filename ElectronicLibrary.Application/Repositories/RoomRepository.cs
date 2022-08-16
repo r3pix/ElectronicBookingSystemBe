@@ -19,7 +19,7 @@ namespace ElectronicLibrary.Application.Repositories
         }
 
         public override async Task<IEnumerable<Room>> GetAll() =>
-           await _dbContext.Rooms.Include(x => x.File).ToListAsync();
+           await _dbContext.Rooms.Include(x => x.File).ToListAsync(); //potem filtrowanie dodać
        
     }
 }

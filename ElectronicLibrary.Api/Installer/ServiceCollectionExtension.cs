@@ -72,8 +72,8 @@ namespace ElectronicLibrary.Infrastructure.Extensions
                 builder.SaveToken = true;
                 builder.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = configuration.GetSection("JWTConfiguration:Issuer").Get<string>(),
