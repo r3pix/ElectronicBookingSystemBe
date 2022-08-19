@@ -53,6 +53,7 @@ namespace ElectronicLibrary.Application.CQRS.Room.Commands
         /// Cost of the room
         /// </summary>
         public float Cost { get; set; }
+        public Guid CategoryId { get; set; }
 
         /// <summary>
         /// Picture of the room

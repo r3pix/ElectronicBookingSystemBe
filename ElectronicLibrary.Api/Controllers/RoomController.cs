@@ -16,9 +16,10 @@ namespace ElectronicLibrary.Api.Controllers
     /// <summary>
     /// Controller handling requests for Room entity
     /// </summary>
+    /*
     [ApiController]
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] */
     public class RoomController : BaseController
     {
         public RoomController(IMediator mediator) : base(mediator)

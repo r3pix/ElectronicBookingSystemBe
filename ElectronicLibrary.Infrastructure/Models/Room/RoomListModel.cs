@@ -48,7 +48,7 @@ namespace ElectronicLibrary.Infrastructure.Models.Room
         /// </summary>
         public float Cost { get; set; }
 
-       public Guid FileId { get; set; }
+        public Guid FileId { get; set; }
 
 
     }

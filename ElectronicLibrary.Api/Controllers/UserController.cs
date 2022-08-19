@@ -13,10 +13,10 @@ using System.Net;
 using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Api.Controllers
-{
+{/*
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize]*/
     public class UserController : BaseController
     {
         public UserController(IMediator mediator) : base(mediator)

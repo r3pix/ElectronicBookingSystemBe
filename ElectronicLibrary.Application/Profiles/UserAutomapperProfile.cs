@@ -27,7 +27,7 @@ namespace ElectronicLibrary.Application.Profiles
                     dest.Address.PostalCode = src.PostalCode;
                     dest.Address.Street = src.Street;
                     dest.Identity.Name = src.Name;
-                    dest.Identity.LastName = src.Name;
+                    dest.Identity.LastName = src.LastName;
                 });
 
             CreateMap<User, UserData>()

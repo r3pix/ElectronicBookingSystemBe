@@ -24,6 +24,7 @@ using ElectronicLibrary.Application.CQRS.User.Commands;
 using ElectronicLibrary.Application.Profiles;
 using AutoMapper;
 using ElectronicLibrary.Infrastructure.Models;
+using ElectronicBookingSystem.Persistance.Seeder;
 
 namespace ElectronicLibrary.Api
 {
@@ -49,12 +50,15 @@ namespace ElectronicLibrary.Api
             services.AddCustomCors(Configuration);
             services.AddHttpContextAccessor();
             services.AddSingleton<ExceptionHandlingMiddleware>();
+            
 
             services.AddDbContext<ElectronicBookingSystemDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Library"), 
                     x=>x.MigrationsAssembly("ElectronicBookingSystem.Persistance"));
             });
+            //because it injects context
+            services.AddScoped<RoleSeeder>();
 
             services.AddInfrastructureServices();
             services.AddConfigurationModels(Configuration);
@@ -72,8 +76,11 @@ namespace ElectronicLibrary.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleSeeder seeder)
         {
+            //seeder.Seed();
+            //Task.Run(async () => await seeder.Seed());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -82,6 +89,7 @@ namespace ElectronicLibrary.Api
             }
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
+            
 
             app.UseRouting();
             app.UseCors("AllowedHosts");

@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Api.Controllers
 {
+    /*
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize]*/
     public class FileController : BaseController
     {
         public FileController(IMediator mediator) : base(mediator)

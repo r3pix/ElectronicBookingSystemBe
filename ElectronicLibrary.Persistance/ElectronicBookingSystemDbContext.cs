@@ -19,12 +19,18 @@ namespace ElectronicLibrary.Persistance
         public DbSet<Equipment> Equipment { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<Role> Roles { get; set; }
         //dodacsety i  changetracker, przeciazyc savechanges
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             CorrectModificationFields();
             return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task<int> SaveChangesAsyncWithoutUser()
+        {
+            return await base.SaveChangesAsync();
         }
 
         private void CorrectModificationFields()

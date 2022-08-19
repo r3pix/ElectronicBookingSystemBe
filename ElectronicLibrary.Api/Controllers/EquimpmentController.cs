@@ -14,9 +14,10 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Api.Controllers
 {
+    /*
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize]*/
     public class EquimpmentController : BaseController
     {
         public EquimpmentController(IMediator mediator) :base(mediator)

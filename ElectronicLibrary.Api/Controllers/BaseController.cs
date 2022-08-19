@@ -10,9 +10,9 @@ namespace ElectronicLibrary.Api.Controllers
     /// <summary>
     /// Base controller class having basic call operations
     /// </summary>
-    //[ApiController]
+    [ApiController]
     //[Authorize]
-    //[Route("api/[controller]")]
+    [Route("api/[controller]")]
     public abstract class BaseController : ControllerBase
     {
         private const int _queryResponse = 200;

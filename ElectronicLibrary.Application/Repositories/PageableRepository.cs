@@ -18,7 +18,7 @@ namespace ElectronicBookingSystem.Application.Repositories
 
         public SearchRepository(ElectronicBookingSystemDbContext dbContext)
         {
-            this._dbContext = dbContext;
+            _dbContext = dbContext;
             dbSet = dbContext.Set<TEntity>();       
         }
 
