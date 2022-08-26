@@ -30,10 +30,5 @@ namespace ElectronicLibrary.Infrastructure.Extensions
         /// Direction of sort
         /// </summary>
         public bool Desc { get; set; }
-
-        /// <summary>
-        /// Words to filter by
-        /// </summary>
-        public string SearchTerm { get; set; }
     }
 }
