@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ElectronicBookingSystem.Application.CQRS.Category.Commands;
 using ElectronicBookingSystem.Domain.Entities;
+using ElectronicBookingSystem.Infrastructure.Models.Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace ElectronicBookingSystem.Application.Profiles
         public CategoryAutomapperProfile()
         {
             CreateMap<AddCategoryCommand, Category>();
+            CreateMap<UpdateCategoryCommand, Category>();
+            CreateMap<Category, CategoryListModel>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ElectronicBookingSystem.Infrastructure.Extensions;
+﻿using ElectronicBookingSystem.Application.Interfaces;
+using ElectronicBookingSystem.Infrastructure.Extensions;
 using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Extensions;
 using ElectronicLibrary.Persistance;
@@ -11,15 +12,15 @@ using System.Threading.Tasks;
 
 namespace ElectronicBookingSystem.Application.Repositories
 {
-    public abstract class SearchRepository<TFilter,TEntity>  where TEntity : BaseEntity where TFilter : class
+    public abstract class PageableRepository<TFilter, TEntity> : IPageableRepository<TFilter, TEntity> where TEntity : BaseEntity where TFilter : class
     {
         private readonly ElectronicBookingSystemDbContext _dbContext;
         protected DbSet<TEntity> dbSet;
 
-        public SearchRepository(ElectronicBookingSystemDbContext dbContext)
+        public PageableRepository(ElectronicBookingSystemDbContext dbContext)
         {
             _dbContext = dbContext;
-            dbSet = dbContext.Set<TEntity>();       
+            dbSet = dbContext.Set<TEntity>();
         }
 
         public virtual async Task<(IEnumerable<TEntity>, int)> GetPageable(TFilter filter, IPageableQueryModel page) =>

@@ -51,6 +51,8 @@ namespace ElectronicLibrary.Application.Interfaces
         /// <returns>Updated entity</returns>
         Task<TEntity> Update<TKey, TModel>(TKey id, TModel model);
 
+        Task<TEntity> Update(TEntity entity);
+
         Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> expression);
     }
 }

@@ -1,4 +1,5 @@
-﻿using ElectronicBookingSystem.Infrastructure.Interfaces;
+﻿using ElectronicBookingSystem.Domain.Entities;
+using ElectronicBookingSystem.Infrastructure.Interfaces;
 using ElectronicLibrary.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,6 +21,7 @@ namespace ElectronicLibrary.Persistance
         public DbSet<Service> Services { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Category> Categories { get; set; }
         //dodacsety i  changetracker, przeciazyc savechanges
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

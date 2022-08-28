@@ -1,4 +1,6 @@
-﻿using ElectronicBookingSystem.Infrastructure.Interfaces;
+﻿using ElectronicBookingSystem.Application.Interfaces;
+using ElectronicBookingSystem.Application.Repositories;
+using ElectronicBookingSystem.Infrastructure.Interfaces;
 using ElectronicBookingSystem.Infrastructure.Services;
 using ElectronicLibrary.Application.Interfaces;
 using ElectronicLibrary.Application.Repositories;
@@ -36,7 +38,10 @@ namespace ElectronicLibrary.Infrastructure.Extensions
             .AddTransient<IRoomRepository, RoomRepository>()
             .AddTransient<IUserRepository, UserRepository>()
             .AddTransient<IFileService, FileService>()
-            .AddTransient<ICurrentUserService, CurrentUserService>();
+            .AddTransient<ICurrentUserService, CurrentUserService>()
+            .AddTransient<ICategoryPageableRepository, CategoryPageableRepository>();
+
+            //services.AddTransient(typeof(IPageableRepository<,>), typeof(PageableRepository<,>));
 
         }
 

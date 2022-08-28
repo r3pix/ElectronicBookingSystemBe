@@ -1,5 +1,8 @@
 ﻿using ElectronicBookingSystem.Application.CQRS.Category.Commands;
+using ElectronicBookingSystem.Application.CQRS.Category.Queries;
+using ElectronicBookingSystem.Infrastructure.Models.Category;
 using ElectronicLibrary.Api.Controllers;
+using ElectronicLibrary.Infrastructure.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +23,16 @@ namespace ElectronicBookingSystem.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         public async Task<ActionResult> Create([FromBody] AddCategoryCommand command) =>
             await ExecuteCommand(async () => await _mediator.Send(command));
+
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<ActionResult> Update([FromBody] UpdateCategoryCommand command) =>
+                await ExecuteCommand(async () => await _mediator.Send(command));
+
+        [HttpGet("pageable")]
+        [ProducesResponseType(typeof(Response<PageableModel<CategoryListModel>>),(int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetPageable([FromQuery] GetPageableCategoriesDto model) =>
+            await ExecuteQuery(async () => await _mediator.Send(GetPageableCategoriesQuery.Create(model)));
 
     }
 }
