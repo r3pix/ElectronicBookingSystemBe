@@ -266,17 +266,11 @@ namespace ElectronicBookingSystem.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DecorationId")
-                        .IsUnique()
-                        .HasFilter("[DecorationId] IS NOT NULL");
+                    b.HasIndex("DecorationId");
 
-                    b.HasIndex("EquipmentId")
-                        .IsUnique()
-                        .HasFilter("[EquipmentId] IS NOT NULL");
+                    b.HasIndex("EquipmentId");
 
-                    b.HasIndex("RoomId")
-                        .IsUnique()
-                        .HasFilter("[RoomId] IS NOT NULL");
+                    b.HasIndex("RoomId");
 
                     b.ToTable("File");
                 });
@@ -532,16 +526,16 @@ namespace ElectronicBookingSystem.Persistance.Migrations
             modelBuilder.Entity("ElectronicLibrary.Domain.Entities.File", b =>
                 {
                     b.HasOne("ElectronicLibrary.Domain.Entities.Decoration", "Decoration")
-                        .WithOne("File")
-                        .HasForeignKey("ElectronicLibrary.Domain.Entities.File", "DecorationId");
+                        .WithMany("Files")
+                        .HasForeignKey("DecorationId");
 
                     b.HasOne("ElectronicLibrary.Domain.Entities.Equipment", "Equipment")
-                        .WithOne("File")
-                        .HasForeignKey("ElectronicLibrary.Domain.Entities.File", "EquipmentId");
+                        .WithMany("Files")
+                        .HasForeignKey("EquipmentId");
 
                     b.HasOne("ElectronicLibrary.Domain.Entities.Room", "Room")
-                        .WithOne("File")
-                        .HasForeignKey("ElectronicLibrary.Domain.Entities.File", "RoomId");
+                        .WithMany("Files")
+                        .HasForeignKey("RoomId");
 
                     b.Navigation("Decoration");
 
@@ -592,14 +586,14 @@ namespace ElectronicBookingSystem.Persistance.Migrations
                 {
                     b.Navigation("Bookings");
 
-                    b.Navigation("File");
+                    b.Navigation("Files");
                 });
 
             modelBuilder.Entity("ElectronicLibrary.Domain.Entities.Equipment", b =>
                 {
                     b.Navigation("Bookings");
 
-                    b.Navigation("File");
+                    b.Navigation("Files");
                 });
 
             modelBuilder.Entity("ElectronicLibrary.Domain.Entities.Role", b =>
@@ -611,7 +605,7 @@ namespace ElectronicBookingSystem.Persistance.Migrations
                 {
                     b.Navigation("Bookings");
 
-                    b.Navigation("File");
+                    b.Navigation("Files");
                 });
 
             modelBuilder.Entity("ElectronicLibrary.Domain.Entities.Service", b =>

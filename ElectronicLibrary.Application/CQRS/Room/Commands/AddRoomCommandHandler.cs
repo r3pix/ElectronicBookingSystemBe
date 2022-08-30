@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using ElectronicLibrary.Application.Interfaces;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Models;
 using ElectronicLibrary.Infrastructure.Services;
+using ElectronicBookingSystem.Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -19,10 +19,10 @@ namespace ElectronicLibrary.Application.CQRS.Room.Commands
         private readonly IFileService _fileService;
         private readonly FileConfiguration _configuration;
         private readonly IMapper _mapper;
-        private readonly IRepository<Domain.Entities.Room> _roomRepository;
-        private readonly IRepository<Domain.Entities.File> _fileRepository;
+        private readonly IRepository<ElectronicBookingSystem.Domain.Entities.Room> _roomRepository;
+        private readonly IRepository<ElectronicBookingSystem.Domain.Entities.File> _fileRepository;
 
-        public AddRoomCommandHandler(IRepository<Domain.Entities.Room> roomRepository, IRepository<Domain.Entities.File> fileRepository, IFileService fileService, FileConfiguration configuration, IMapper mapper)
+        public AddRoomCommandHandler(IRepository<ElectronicBookingSystem.Domain.Entities.Room> roomRepository, IRepository<ElectronicBookingSystem.Domain.Entities.File> fileRepository, IFileService fileService, FileConfiguration configuration, IMapper mapper)
         {
             _roomRepository = roomRepository;
             _fileRepository = fileRepository;
@@ -33,10 +33,10 @@ namespace ElectronicLibrary.Application.CQRS.Room.Commands
 
         public async Task<Unit> Handle(AddRoomCommand request, CancellationToken cancellationToken)
         {
-            var entity = _mapper.Map<Domain.Entities.Room>(request);
+            var entity = _mapper.Map<ElectronicBookingSystem.Domain.Entities.Room>(request);
             entity = await _roomRepository.Save(entity);
 
-            await _fileRepository.Save(new Domain.Entities.File()
+            await _fileRepository.Save(new ElectronicBookingSystem.Domain.Entities.File()
             {
                 FileName = request.File.FileName,
                 PathFileName = Path.Combine(_configuration.UploadPath, entity.Id.ToString(), request.File.FileName),

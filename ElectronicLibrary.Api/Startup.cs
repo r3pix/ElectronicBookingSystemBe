@@ -19,12 +19,12 @@ using FluentValidation.AspNetCore;
 using ElectronicLibrary.Application.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Application.CQRS.User.Commands;
 using ElectronicLibrary.Application.Profiles;
 using AutoMapper;
 using ElectronicLibrary.Infrastructure.Models;
 using ElectronicBookingSystem.Persistance.Seeder;
+using ElectronicBookingSystem.Domain.Entities;
 
 namespace ElectronicLibrary.Api
 {

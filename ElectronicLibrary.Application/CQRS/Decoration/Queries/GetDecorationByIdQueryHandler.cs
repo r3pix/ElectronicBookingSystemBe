@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ElectronicBookingSystem.Infrastructure.Models.Decoration;
 using ElectronicLibrary.Application.Interfaces;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Extensions;
 using MediatR;
 using System;

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Domain.Entities;
 using ElectronicBookingSystem.Infrastructure.Models.Decoration;
 using ElectronicLibrary.Application.CQRS.Decoration.Commands;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ namespace ElectronicLibrary.Application.Profiles
 {
     public class DecorationAutomapperProfile : Profile
     {
+        /*
         public class MapFileAddressAction : IMappingAction<Decoration, DecorationModel>
         {
             private readonly FileConfiguration _fileConfiguration;
@@ -27,16 +28,17 @@ namespace ElectronicLibrary.Application.Profiles
                 destination.FileAddress = String.Format(_fileConfiguration.FileControllerAddress, source.File.Id);
             }
         }
+        */
 
         public DecorationAutomapperProfile()
         {
-            CreateMap<AddDecorationCommand, Decoration>()
-                .ForMember(dest => dest.File, opt => opt.Ignore());
+            CreateMap<AddDecorationCommand, Decoration>();
+            //.ForMember(dest => dest.File, opt => opt.Ignore());
 
             CreateMap<Decoration, DecorationModel>()
                 .ForMember(dest => dest.Cost, opt => opt.MapFrom(src => src.Cost))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .AfterMap<MapFileAddressAction>();
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+                //.AfterMap<MapFileAddressAction>();
         }
     }
 }

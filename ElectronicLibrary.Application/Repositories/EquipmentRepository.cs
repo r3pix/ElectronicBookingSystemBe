@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Domain.Entities;
 using ElectronicLibrary.Application.CQRS.Equipment.Queries;
 using ElectronicLibrary.Application.Interfaces;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Extensions;
 using ElectronicLibrary.Persistance;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +23,6 @@ namespace ElectronicLibrary.Application.Repositories
            await _dbContext.Equipment.GetForSelect(request.FilterWords).ToListAsync();
 
         public async Task<Equipment> GetById(Guid Id) =>
-            await _dbContext.Equipment.Include(x => x.File).FirstOrDefaultAsync(x => x.Id == Id);
+            await _dbContext.Equipment.Include(x => x.Files).FirstOrDefaultAsync(x => x.Id == Id);
     }
 }

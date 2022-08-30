@@ -1,4 +1,4 @@
-﻿using ElectronicLibrary.Domain.Entities;
+﻿using ElectronicBookingSystem.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -16,9 +16,9 @@ namespace ElectronicLibrary.Persistance.Configuration
 
         public override void Configure(EntityTypeBuilder<File> builder)
         {
-            builder.HasOne(x => x.Room).WithOne(x => x.File).HasForeignKey<File>(x => x.RoomId);
-            builder.HasOne(x => x.Decoration).WithOne(x => x.File).HasForeignKey<File>(x=>x.DecorationId);
-            builder.HasOne(x => x.Equipment).WithOne(x => x.File).HasForeignKey<File>(x=>x.EquipmentId);
+            builder.HasOne(x => x.Room).WithMany(x => x.Files).HasForeignKey(x => x.RoomId);
+            builder.HasOne(x => x.Decoration).WithMany(x => x.Files).HasForeignKey(x=>x.DecorationId);
+            builder.HasOne(x => x.Equipment).WithMany(x => x.Files).HasForeignKey(x=>x.EquipmentId);
 
             base.Configure(builder);
         }

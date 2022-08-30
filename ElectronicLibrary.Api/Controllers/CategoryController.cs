@@ -34,5 +34,10 @@ namespace ElectronicBookingSystem.Api.Controllers
         public async Task<ActionResult> GetPageable([FromQuery] GetPageableCategoriesDto model) =>
             await ExecuteQuery(async () => await _mediator.Send(GetPageableCategoriesQuery.Create(model)));
 
+        [HttpGet("GetForSelect")]
+        [ProducesResponseType(typeof(Response<IEnumerable<SelectModel<Guid>>>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetForSelect([FromQuery] GetCategoriesForSelectQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
+
     }
 }

@@ -1,5 +1,5 @@
-﻿using ElectronicLibrary.Application.Interfaces;
-using ElectronicLibrary.Domain.Entities;
+﻿using ElectronicBookingSystem.Domain.Entities;
+using ElectronicLibrary.Application.Interfaces;
 using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;

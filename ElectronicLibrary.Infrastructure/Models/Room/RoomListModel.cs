@@ -47,6 +47,8 @@ namespace ElectronicLibrary.Infrastructure.Models.Room
         /// Cost of the room
         /// </summary>
         public float Cost { get; set; }
+        public string CategoryName { get; set; }
+        public Guid CategoryId { get; set; }
 
         public Guid FileId { get; set; }
 

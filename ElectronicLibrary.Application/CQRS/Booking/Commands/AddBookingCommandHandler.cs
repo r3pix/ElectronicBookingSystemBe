@@ -12,10 +12,10 @@ namespace ElectronicLibrary.Application.CQRS.Booking.Commands
 {
     public class AddBookingCommandHandler : IRequestHandler<AddBookingCommand>
     {
-        private readonly IRepository<Domain.Entities.Booking> _bookingRepository;
+        private readonly IRepository<ElectronicBookingSystem.Domain.Entities.Booking> _bookingRepository;
         private readonly IMapper _mapper;
 
-        public AddBookingCommandHandler(IRepository<Domain.Entities.Booking> bookingRepository, IMapper mapper)
+        public AddBookingCommandHandler(IRepository<ElectronicBookingSystem.Domain.Entities.Booking> bookingRepository, IMapper mapper)
         {
             _bookingRepository = bookingRepository;
             _mapper = mapper;
@@ -23,7 +23,7 @@ namespace ElectronicLibrary.Application.CQRS.Booking.Commands
 
         public async Task<Unit> Handle(AddBookingCommand request, CancellationToken cancellationToken)
         {
-            var entity = _mapper.Map<Domain.Entities.Booking>(request);
+            var entity = _mapper.Map<ElectronicBookingSystem.Domain.Entities.Booking>(request);
             await _bookingRepository.Save(entity);
             return default;
         }

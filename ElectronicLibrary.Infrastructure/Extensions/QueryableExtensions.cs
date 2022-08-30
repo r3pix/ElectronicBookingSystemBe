@@ -1,4 +1,4 @@
-﻿using ElectronicLibrary.Domain.Entities;
+﻿using ElectronicBookingSystem.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.DynamicLinq;
@@ -18,14 +18,14 @@ namespace ElectronicBookingSystem.Infrastructure.Extensions
             var count = await query.CountAsync();
             if (page.Desc)
             {
-                query = query.OrderByDescending(x=>"x." + page.OrderBy);
+                query = query.OrderBy(page.OrderBy + " desc");
             }
             else
             {
-                query = query.OrderBy(x => "x." + page.OrderBy);
+                query = query.OrderBy(page.OrderBy + " asc");
             }
             query = query.Skip((page.PageNumber - 1) * page.PageSize);
-            query.Take(page.PageSize);
+            query = query.Take(page.PageSize);
             return (await query.ToListAsync(), count);
         }
     }

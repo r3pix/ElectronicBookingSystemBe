@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Domain.Entities;
 using ElectronicLibrary.Application.CQRS.Booking.Commands;
-using ElectronicLibrary.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Domain.Entities;
 using ElectronicLibrary.Application.CQRS.Service.Queries;
 using ElectronicLibrary.Application.Interfaces;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Extensions;
 using ElectronicLibrary.Persistance;
 using Microsoft.EntityFrameworkCore;

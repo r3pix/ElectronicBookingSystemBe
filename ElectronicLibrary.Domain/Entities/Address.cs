@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectronicLibrary.Domain.Entities
+namespace ElectronicBookingSystem.Domain.Entities
 {
     /// <summary>
     /// Address entity class

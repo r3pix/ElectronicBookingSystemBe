@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Application.CQRS.Room.Commands;
+using ElectronicBookingSystem.Domain.Entities;
 using ElectronicLibrary.Application.CQRS.Room.Commands;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Models;
 using ElectronicLibrary.Infrastructure.Models.Room;
 using System;
@@ -38,12 +39,15 @@ namespace ElectronicLibrary.Application.Profiles
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.TotalMaxPlaces, opt => opt.MapFrom(src => src.TotalMaxPlaces))
                 .ForMember(dest => dest.TotalMaxTables, opt => opt.MapFrom(src => src.TotalMaxTables))
-                .ForMember(dest => dest.Width, opt => opt.MapFrom(src => src.Width))
-                .ForMember(dest => dest.File, opt => opt.Ignore());
+                .ForMember(dest => dest.Width, opt => opt.MapFrom(src => src.Width));
+                //.ForMember(dest => dest.File, opt => opt.Ignore());
 
             CreateMap<Room, RoomListModel>()
                 //.AfterMap<SetFileDownloadAddressAction>(); //trzeba dodac include
-                .ForMember(x => x.FileId, opt => opt.MapFrom(x => x.File.Id));
+                .ForMember(x => x.FileId, opt => opt.MapFrom(x => x.Files.OrderByDescending(x=>x.CreateDate).First().Id))
+                .ForMember(x=>x.CategoryName, opt=>opt.MapFrom(src=>src.Category.Name));
+
+            CreateMap<UpdateRoomCommand, Room>();
         }
     }
 }

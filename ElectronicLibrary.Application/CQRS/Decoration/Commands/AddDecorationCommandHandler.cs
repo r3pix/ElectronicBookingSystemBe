@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Models;
 using ElectronicLibrary.Application.Repositories;
 using ElectronicLibrary.Infrastructure.Services;
@@ -20,13 +19,13 @@ namespace ElectronicLibrary.Application.CQRS.Decoration.Commands
     /// </summary>
     public class AddDecorationCommandHandler : IRequestHandler<AddDecorationCommand>
     {
-        private readonly IRepository<Domain.Entities.Decoration> _decorationRepository;
-        private readonly IRepository<Domain.Entities.File> _fileRepository;
+        private readonly IDecorationRepository _decorationRepository;
+        private readonly IRepository<ElectronicBookingSystem.Domain.Entities.File> _fileRepository;
         private readonly FileConfiguration _fileConfiguration;
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
 
-        public AddDecorationCommandHandler(IDecorationRepository decorationRepository,IRepository<Domain.Entities.File> fileRepository,
+        public AddDecorationCommandHandler(IDecorationRepository decorationRepository,IRepository<ElectronicBookingSystem.Domain.Entities.File> fileRepository,
             FileConfiguration fileConfiguration,IFileService fileService ,IMapper mapper)
         {
             _decorationRepository = decorationRepository;
@@ -44,13 +43,13 @@ namespace ElectronicLibrary.Application.CQRS.Decoration.Commands
         /// <returns></returns>
         public async Task<Unit> Handle(AddDecorationCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _decorationRepository.Save(new Domain.Entities.Decoration()
+            var entity = await _decorationRepository.Save(new ElectronicBookingSystem.Domain.Entities.Decoration()
             {
                 Name = request.Name,
                 Cost = request.Cost
             });
 
-            await _fileRepository.Save(new Domain.Entities.File()
+            await _fileRepository.Save(new ElectronicBookingSystem.Domain.Entities.File()
             {
                 FileName = request.File.FileName,
                 UploadPath = Path.Combine(_fileConfiguration.UploadPath,entity.Id.ToString()),

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ElectronicLibrary.Domain.Entities;
+using ElectronicBookingSystem.Domain.Entities;
 using ElectronicLibrary.Persistance;
 using Microsoft.EntityFrameworkCore;
 using System;

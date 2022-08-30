@@ -1,12 +1,10 @@
-﻿using ElectronicBookingSystem.Domain.Entities;
-using ElectronicLibrary.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectronicLibrary.Domain.Entities
+namespace ElectronicBookingSystem.Domain.Entities
 {
     /// <summary>
     /// Entity class modelling room
@@ -58,7 +56,7 @@ namespace ElectronicLibrary.Domain.Entities
         /// <summary>
         /// Picture of the room
         /// </summary>
-        public virtual File File { get; set; }
+        public virtual IEnumerable<File> Files { get; set; }
 
         /// <summary>
         /// Reference to booking class

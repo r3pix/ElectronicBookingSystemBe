@@ -12,10 +12,10 @@ namespace ElectronicLibrary.Application.CQRS.File.Queries
 {
     public class GetFileByIdQueryHandler : IRequestHandler<GetFileByIdQuery, (byte[], string)>
     {
-        private readonly IRepository<Domain.Entities.File> _fileRepository;
+        private readonly IRepository<ElectronicBookingSystem.Domain.Entities.File> _fileRepository;
         private readonly IFileService _fileService;
 
-        public GetFileByIdQueryHandler(IRepository<Domain.Entities.File> fileRepository, IFileService fileService)
+        public GetFileByIdQueryHandler(IRepository<ElectronicBookingSystem.Domain.Entities.File> fileRepository, IFileService fileService)
         {
             _fileRepository = fileRepository;
             _fileService = fileService;

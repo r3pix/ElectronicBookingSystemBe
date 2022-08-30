@@ -1,4 +1,4 @@
-﻿using ElectronicLibrary.Domain.Entities;
+﻿using ElectronicBookingSystem.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;

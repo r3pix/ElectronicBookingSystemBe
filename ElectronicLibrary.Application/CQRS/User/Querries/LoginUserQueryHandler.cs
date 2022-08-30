@@ -18,11 +18,11 @@ namespace ElectronicLibrary.Application.CQRS.User.Querries
 {
     public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, Response<string>>
     {
-        private readonly IRepository<Domain.Entities.User> _userRepository;
-        private readonly IPasswordHasher<Domain.Entities.User> _passwordHasher;
+        private readonly IRepository<ElectronicBookingSystem.Domain.Entities.User> _userRepository;
+        private readonly IPasswordHasher<ElectronicBookingSystem.Domain.Entities.User> _passwordHasher;
         private readonly IConfiguration _configuration;
 
-        public LoginUserQueryHandler(IUserRepository userRepository, IPasswordHasher<Domain.Entities.User> passwordHasher, IConfiguration configuration)
+        public LoginUserQueryHandler(IUserRepository userRepository, IPasswordHasher<ElectronicBookingSystem.Domain.Entities.User> passwordHasher, IConfiguration configuration)
         {
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;

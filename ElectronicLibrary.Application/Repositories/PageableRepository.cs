@@ -1,6 +1,6 @@
 ﻿using ElectronicBookingSystem.Application.Interfaces;
+using ElectronicBookingSystem.Domain.Entities;
 using ElectronicBookingSystem.Infrastructure.Extensions;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Extensions;
 using ElectronicLibrary.Persistance;
 using Microsoft.EntityFrameworkCore;

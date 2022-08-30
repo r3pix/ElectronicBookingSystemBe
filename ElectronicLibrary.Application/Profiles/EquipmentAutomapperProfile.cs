@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Domain.Entities;
 using ElectronicBookingSystem.Infrastructure.Models.Equipment;
 using ElectronicLibrary.Application.CQRS.Equipment.Commands;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ namespace ElectronicLibrary.Application.Profiles
 {
     public class EquipmentAutomapperProfile : Profile
     {
+        /*
         public class EquipmentFileAddressAction : IMappingAction<Equipment, EquipmentModel>
         {
             private readonly FileConfiguration _fileConfiguration;
@@ -26,17 +27,17 @@ namespace ElectronicLibrary.Application.Profiles
             {
                 destination.FileAddress = string.Format(_fileConfiguration.FileControllerAddress,source.File.Id); 
             }
-        }
+        }*/
 
         public EquipmentAutomapperProfile()
         {
-            CreateMap<AddEquipmentCommand,Equipment>()
-                .ForMember(dest=>dest.File, opt=>opt.Ignore());
+            CreateMap<AddEquipmentCommand, Equipment>();
+            //.ForMember(dest=>dest.File, opt=>opt.Ignore());
 
             CreateMap<Equipment, EquipmentModel>()
                 .ForMember(dest => dest.Cost, opt => opt.MapFrom(src => src.Cost))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .AfterMap<EquipmentFileAddressAction>();
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+                //.AfterMap<EquipmentFileAddressAction>();
         }
     }
 }

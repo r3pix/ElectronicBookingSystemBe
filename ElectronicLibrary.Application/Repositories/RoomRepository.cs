@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Domain.Entities;
 using ElectronicLibrary.Application.Interfaces;
-using ElectronicLibrary.Domain.Entities;
 using ElectronicLibrary.Infrastructure.Extensions;
 using ElectronicLibrary.Persistance;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace ElectronicLibrary.Application.Repositories
         }
 
         public override async Task<IEnumerable<Room>> GetAll() =>
-           await _dbContext.Rooms.Include(x => x.File).ToListAsync(); //potem filtrowanie dodać
+           await _dbContext.Rooms.Include(x => x.Files).ToListAsync(); //potem filtrowanie dodać
        
     }
 }

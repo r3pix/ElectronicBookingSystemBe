@@ -1,6 +1,5 @@
 ﻿using ElectronicBookingSystem.Domain.Entities;
 using ElectronicBookingSystem.Infrastructure.Interfaces;
-using ElectronicLibrary.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

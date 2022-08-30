@@ -1,4 +1,7 @@
-﻿using ElectronicLibrary.Application.CQRS.Room.Commands;
+﻿using ElectronicBookingSystem.Application.CQRS.Room.Commands;
+using ElectronicBookingSystem.Application.CQRS.Room.Queries;
+using ElectronicBookingSystem.Infrastructure.Models.Room;
+using ElectronicLibrary.Application.CQRS.Room.Commands;
 using ElectronicLibrary.Application.CQRS.Room.Queries;
 using ElectronicLibrary.Infrastructure.Extensions;
 using ElectronicLibrary.Infrastructure.Models.Room;
@@ -36,9 +39,25 @@ namespace ElectronicLibrary.Api.Controllers
         public async Task<ActionResult> Create([FromForm] AddRoomCommand command) =>
             await ExecuteCommand(async () => await _mediator.Send(command));
 
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<ActionResult> Update([FromBody] UpdateRoomCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
+        
+
         [HttpGet("list")]
         [ProducesResponseType(typeof(Response<IEnumerable<RoomListModel>>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetRoomList([FromQuery] GetRoomListQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
+
+        [HttpGet("pageable")]
+        [ProducesResponseType(typeof(Response<PageableModel<RoomListModel>>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetPageable([FromQuery] GetPageableRoomsDto model) =>
+            await ExecuteQuery(async () => await _mediator.Send(GetPageableRoomsQuery.Create(model)));
+
+
+        //edit room
+        //edit-picture
+
     }
 }

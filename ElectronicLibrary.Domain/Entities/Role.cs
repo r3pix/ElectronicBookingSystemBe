@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ElectronicBookingSystem.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElectronicLibrary.Domain.Entities
+namespace ElectronicBookingSystem.Domain.Entities
 {
     /// <summary>
     /// Entity class modelling user roles
