@@ -56,8 +56,10 @@ namespace ElectronicLibrary.Api.Controllers
             await ExecuteQuery(async () => await _mediator.Send(GetPageableRoomsQuery.Create(model)));
 
 
-        //edit room
-        //edit-picture
-
+        [HttpPut("edit-picture")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<ActionResult> EditFile([FromForm] EditRoomPictureCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
+        
     }
 }

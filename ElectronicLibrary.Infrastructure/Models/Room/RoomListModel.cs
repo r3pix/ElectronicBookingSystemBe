@@ -8,6 +8,7 @@ namespace ElectronicLibrary.Infrastructure.Models.Room
 {
     public class RoomListModel
     {
+        public Guid Id { get; set; }
         /// <summary>
         /// Name of the room
         /// </summary>

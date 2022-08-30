@@ -24,7 +24,7 @@ namespace ElectronicBookingSystem.Application.CQRS.Room.Commands
         public async Task<Unit> Handle(UpdateRoomCommand request, CancellationToken cancellationToken)
         {
             var entity = _mapper.Map<Domain.Entities.Room>(request);
-
+            await _repository.Update(entity);
             return default;
         }
     }

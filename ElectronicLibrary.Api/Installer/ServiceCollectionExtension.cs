@@ -41,7 +41,8 @@ namespace ElectronicLibrary.Infrastructure.Extensions
             .AddTransient<ICurrentUserService, CurrentUserService>()
             .AddTransient<ICategoryPageableRepository, CategoryPageableRepository>()
             .AddTransient<IRoomPageableRepository,RoomPageableRepository>()
-            .AddTransient<ICategoryRepository, CategoryRepository>();
+            .AddTransient<ICategoryRepository, CategoryRepository>()
+            .AddTransient<IPageableDecorationsRepository, PageableDecorationsRepository>();
 
             //services.AddTransient(typeof(IPageableRepository<,>), typeof(PageableRepository<,>));
 

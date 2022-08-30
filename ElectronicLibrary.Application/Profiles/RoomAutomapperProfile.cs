@@ -44,7 +44,7 @@ namespace ElectronicLibrary.Application.Profiles
 
             CreateMap<Room, RoomListModel>()
                 //.AfterMap<SetFileDownloadAddressAction>(); //trzeba dodac include
-                .ForMember(x => x.FileId, opt => opt.MapFrom(x => x.Files.OrderByDescending(x=>x.CreateDate).First().Id))
+                .ForMember(x => x.FileId, opt => opt.MapFrom(x => x.Files.OrderByDescending(x=>x.CreateDate).FirstOrDefault().Id))
                 .ForMember(x=>x.CategoryName, opt=>opt.MapFrom(src=>src.Category.Name));
 
             CreateMap<UpdateRoomCommand, Room>();

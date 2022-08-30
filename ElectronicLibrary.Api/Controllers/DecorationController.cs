@@ -1,4 +1,5 @@
-﻿using ElectronicBookingSystem.Application.CQRS.Decoration.Queries;
+﻿using ElectronicBookingSystem.Application.CQRS.Decoration.Commands;
+using ElectronicBookingSystem.Application.CQRS.Decoration.Queries;
 using ElectronicBookingSystem.Infrastructure.Models.Decoration;
 using ElectronicLibrary.Application.CQRS.Decoration.Commands;
 using ElectronicLibrary.Application.CQRS.Decoration.Queries;
@@ -29,6 +30,11 @@ namespace ElectronicLibrary.Api.Controllers
         public async Task<ActionResult> Create([FromForm] AddDecorationCommand command) =>
                 await ExecuteCommand(async () => await _mediator.Send(command));
 
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<ActionResult> Update([FromBody] UpdateDecorationCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
+
         [HttpGet("GetForSelect")]
         [ProducesResponseType(typeof(Response<IEnumerable<SelectModel<Guid>>>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetForSelect([FromQuery] GetDecorationsForSelectQuery query) =>
@@ -38,5 +44,15 @@ namespace ElectronicLibrary.Api.Controllers
         [ProducesResponseType(typeof(Response<DecorationModel>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetById([FromRoute] GetDecorationByIdQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
+
+        [HttpGet("pageable")]
+        [ProducesResponseType(typeof(Response<PageableModel<DecorationListModel>>),(int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetPageable([FromQuery] GetPageableDecorationsDto model) =>
+            await ExecuteQuery(async () => await _mediator.Send(GetPageableDecorationsQuery.Create(model)));
+
+        [HttpPut("edit-picture")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<ActionResult> EditPicture([FromForm] EditDecorationPhotoCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
     }
 }

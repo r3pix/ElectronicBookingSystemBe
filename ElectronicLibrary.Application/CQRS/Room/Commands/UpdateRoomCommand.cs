@@ -9,6 +9,7 @@ namespace ElectronicBookingSystem.Application.CQRS.Room.Commands
 {
     public class UpdateRoomCommand : IRequest
     {
+        public Guid Id { get; set; }
         /// <summary>
         /// Name of the room
         /// </summary>

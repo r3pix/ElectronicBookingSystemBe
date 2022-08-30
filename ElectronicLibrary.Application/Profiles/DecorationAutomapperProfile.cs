@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Application.CQRS.Decoration.Commands;
 using ElectronicBookingSystem.Domain.Entities;
 using ElectronicBookingSystem.Infrastructure.Models.Decoration;
 using ElectronicLibrary.Application.CQRS.Decoration.Commands;
@@ -38,7 +39,11 @@ namespace ElectronicLibrary.Application.Profiles
             CreateMap<Decoration, DecorationModel>()
                 .ForMember(dest => dest.Cost, opt => opt.MapFrom(src => src.Cost))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
-                //.AfterMap<MapFileAddressAction>();
+            //.AfterMap<MapFileAddressAction>();
+
+            CreateMap<UpdateDecorationCommand, Decoration>();
+            CreateMap<Decoration,DecorationListModel>()
+                .ForMember(dest=>dest.FileId, opt=>opt.MapFrom(src=>src.Files.FirstOrDefault().Id));
         }
     }
 }
