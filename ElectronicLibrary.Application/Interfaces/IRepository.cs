@@ -54,5 +54,7 @@ namespace ElectronicLibrary.Application.Interfaces
         Task<TEntity> Update(TEntity entity);
 
         Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> expression);
+
+        Task<int> SaveChangesAsync();
     }
 }

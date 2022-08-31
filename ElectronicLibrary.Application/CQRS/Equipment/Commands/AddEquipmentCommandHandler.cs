@@ -27,6 +27,8 @@ namespace ElectronicLibrary.Application.CQRS.Equipment.Commands
             _equipmentRepository = equipmentRepository;
             _fileRepository = fileRepository;
             _fileService = fileService;
+            _mapper = mapper;
+            _fileConfiguration = fileConfiguration;
         }
 
         public async Task<Unit> Handle(AddEquipmentCommand request, CancellationToken cancellationToken)
@@ -37,8 +39,8 @@ namespace ElectronicLibrary.Application.CQRS.Equipment.Commands
             await _fileRepository.Save(new ElectronicBookingSystem.Domain.Entities.File()
             {
                 UploadPath = Path.Combine(_fileConfiguration.UploadPath,entity.Id.ToString()),
-                PathFileName = Path.Combine(_fileConfiguration.UploadPath,entity.Id.ToString(),request.File.Name),
-                FileName = request.File.Name,
+                PathFileName = Path.Combine(_fileConfiguration.UploadPath,entity.Id.ToString(),request.File.FileName),
+                FileName = request.File.FileName,
                 EquipmentId = entity.Id
             });
 

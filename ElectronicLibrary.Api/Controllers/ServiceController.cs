@@ -1,4 +1,5 @@
-﻿using ElectronicBookingSystem.Application.CQRS.Service.Queries;
+﻿using ElectronicBookingSystem.Application.CQRS.Service.Commands;
+using ElectronicBookingSystem.Application.CQRS.Service.Queries;
 using ElectronicBookingSystem.Infrastructure.Models.Service;
 using ElectronicLibrary.Application.CQRS.Service.Commands;
 using ElectronicLibrary.Application.CQRS.Service.Queries;
@@ -29,6 +30,11 @@ namespace ElectronicLibrary.Api.Controllers
         public async Task<ActionResult> Create([FromBody] AddServiceCommand command) =>
             await ExecuteCommand(async () => await _mediator.Send(command));
 
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<ActionResult> Update([FromBody] UpdateServiceCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
+
         [HttpGet("GetForSelect")]
         [ProducesResponseType(typeof(Response<IEnumerable<SelectModel<Guid>>>),(int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetForSelect([FromQuery] GetServicesForSelectQuery query) =>
@@ -38,5 +44,10 @@ namespace ElectronicLibrary.Api.Controllers
         [ProducesResponseType(typeof(Response<ServiceModel>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetById([FromRoute] GetServiceByIdQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
+
+        [HttpGet("pageable")]
+        [ProducesResponseType(typeof(Response<PageableModel<ServiceListModel>>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> Pageable([FromQuery] GetPageableServicesDto model) =>
+            await ExecuteQuery(async () => await _mediator.Send(GetPageableServicesQuery.Create(model)));
     }
 }

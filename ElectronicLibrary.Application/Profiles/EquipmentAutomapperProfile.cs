@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ElectronicBookingSystem.Application.CQRS.Equipment.Commands;
 using ElectronicBookingSystem.Domain.Entities;
 using ElectronicBookingSystem.Infrastructure.Models.Equipment;
 using ElectronicLibrary.Application.CQRS.Equipment.Commands;
@@ -37,7 +38,12 @@ namespace ElectronicLibrary.Application.Profiles
             CreateMap<Equipment, EquipmentModel>()
                 .ForMember(dest => dest.Cost, opt => opt.MapFrom(src => src.Cost))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
-                //.AfterMap<EquipmentFileAddressAction>();
+            //.AfterMap<EquipmentFileAddressAction>();
+
+            CreateMap<UpdateEquipmentCommand,Equipment>();
+
+            CreateMap<Equipment, EquipmentListModel>()
+                .ForMember(dest=>dest.FileId, opt=>opt.MapFrom(src=>src.Files.OrderByDescending(x=>x.CreateDate).FirstOrDefault().Id));
         }
     }
 }

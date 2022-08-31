@@ -112,5 +112,7 @@ namespace ElectronicLibrary.Application.Repositories
         public virtual async Task<TEntity> GetByPredicate(Expression<Func<TEntity, bool>> expression) =>
             await _dbContext.Set<TEntity>().Where(expression).FirstOrDefaultAsync();
 
+        public async Task<int> SaveChangesAsync() =>
+            await _dbContext.SaveChangesAsync();
     }
 }

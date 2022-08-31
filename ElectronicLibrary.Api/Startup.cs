@@ -78,7 +78,7 @@ namespace ElectronicLibrary.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleSeeder seeder)
         {
-            //seeder.Seed();
+            seeder.Seed();
             //Task.Run(async () => await seeder.Seed());
 
             if (env.IsDevelopment())

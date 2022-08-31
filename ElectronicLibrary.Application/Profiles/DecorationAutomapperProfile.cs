@@ -43,7 +43,7 @@ namespace ElectronicLibrary.Application.Profiles
 
             CreateMap<UpdateDecorationCommand, Decoration>();
             CreateMap<Decoration,DecorationListModel>()
-                .ForMember(dest=>dest.FileId, opt=>opt.MapFrom(src=>src.Files.FirstOrDefault().Id));
+                .ForMember(dest=>dest.FileId, opt=>opt.MapFrom(src=>src.Files.OrderByDescending(x=>x.CreateDate).FirstOrDefault().Id));
         }
     }
 }
