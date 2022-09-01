@@ -47,8 +47,8 @@ namespace ElectronicLibrary.Api.Controllers
 
         [HttpGet("list")]
         [ProducesResponseType(typeof(Response<IEnumerable<RoomListModel>>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult> GetRoomList([FromQuery] GetRoomListQuery query) =>
-            await ExecuteQuery(async () => await _mediator.Send(query));
+        public async Task<ActionResult> GetRoomList([FromQuery] GetMainPageRoomsDto model) =>
+            await ExecuteQuery(async () => await _mediator.Send(GetRoomListQuery.Create(model)));
 
         [HttpGet("pageable")]
         [ProducesResponseType(typeof(Response<PageableModel<RoomListModel>>), (int)HttpStatusCode.OK)]

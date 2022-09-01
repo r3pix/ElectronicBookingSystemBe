@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using ElectronicBookingSystem.Domain.Entities;
+using ElectronicBookingSystem.Infrastructure.Extensions;
+using ElectronicBookingSystem.Infrastructure.Models.Room;
 using ElectronicLibrary.Application.Interfaces;
 using ElectronicLibrary.Infrastructure.Extensions;
 using ElectronicLibrary.Persistance;
@@ -14,12 +16,15 @@ namespace ElectronicLibrary.Application.Repositories
 {
     public class RoomRepository : Repository<Room>, IRoomRepository
     {
-        public RoomRepository(ElectronicBookingSystemDbContext dbContext, IMapper mapper): base(dbContext,mapper)
+        public RoomRepository(ElectronicBookingSystemDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 
-        public override async Task<IEnumerable<Room>> GetAll() =>
-           await _dbContext.Rooms.Include(x => x.Files).ToListAsync(); //potem filtrowanie dodać
+        public async Task<IEnumerable<Room>> GetAll(GetMainPageRoomsFilter filter) =>
+           await _dbContext.Rooms
+            .Filter(filter.SearchTerm, x => EF.Functions.Like(x.Name, filter.SearchTerm.ToLikeExpression()) || EF.Functions.Like(x.Category.Name, filter.SearchTerm.ToLikeExpression()))
+            .Filter(filter.CategoryIds, x=> filter.CategoryIds.Contains(x.CategoryId))
+            .Include(x => x.Files).ToListAsync(); //potem filtrowanie dodać
        
     }
 }

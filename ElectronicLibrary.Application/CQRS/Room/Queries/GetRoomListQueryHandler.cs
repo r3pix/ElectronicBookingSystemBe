@@ -25,7 +25,7 @@ namespace ElectronicLibrary.Application.CQRS.Room.Queries
 
         public async Task<Response<IEnumerable<RoomListModel>>> Handle(GetRoomListQuery request, CancellationToken cancellationToken)
         {
-            var entities = await _roomRepository.GetAll();
+            var entities = await _roomRepository.GetAll(request.Filter);
             var result = _mapper.Map<IEnumerable<RoomListModel>>(entities);
             return new Response<IEnumerable<RoomListModel>>(result);
 

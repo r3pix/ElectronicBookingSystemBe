@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +28,24 @@ namespace ElectronicBookingSystem.Infrastructure.Extensions
             query = query.Skip((page.PageNumber - 1) * page.PageSize);
             query = query.Take(page.PageSize);
             return (await query.ToListAsync(), count);
+        }
+
+        public static IQueryable<TEntity> Filter<TEntity>(this IQueryable<TEntity> query, string element, Expression<Func<TEntity, bool>> predicate) where TEntity : BaseEntity
+        {
+            if (!string.IsNullOrEmpty(element))
+            {
+                query = query.Where(predicate);
+            }
+            return query;
+        }
+
+        public static IQueryable<TEntity> Filter<TEntity, T>(this IQueryable<TEntity> query, List<T> element, Expression<Func<TEntity, bool>> predicate) where TEntity : BaseEntity
+        {
+            if(element !=null && element?.Count > 0)
+            {
+                query = query.Where(predicate);
+            }
+            return query;
         }
     }
 }

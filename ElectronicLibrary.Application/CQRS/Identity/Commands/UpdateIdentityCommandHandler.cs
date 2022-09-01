@@ -24,8 +24,9 @@ namespace ElectronicBookingSystem.Application.CQRS.Identity.Commands
 
         public async Task<Unit> Handle(UpdateIdentityCommand request, CancellationToken cancellationToken)
         {
-            var entity = _mapper.Map<Domain.Entities.Identity>(request);
-            await _repository.Update(entity);
+            var entity = await _repository.GetById(request.Id);
+            _mapper.Map(request, entity);
+            await _repository.SaveChangesAsync();
             return default;
         }
     }

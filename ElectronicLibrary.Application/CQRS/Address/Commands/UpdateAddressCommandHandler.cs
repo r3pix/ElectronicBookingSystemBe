@@ -24,8 +24,9 @@ namespace ElectronicBookingSystem.Application.CQRS.Address.Commands
 
         public async Task<Unit> Handle(UpdateAddressCommand request, CancellationToken cancellationToken)
         {
-            var entity = _mapper.Map<Domain.Entities.Address>(request);
-            await _repository.Update(entity);
+            var entity = await _repository.GetById(request.Id);
+            _mapper.Map(request,entity);
+            await _repository.SaveChangesAsync();
             return default;
         }
     }
