@@ -45,7 +45,10 @@ namespace ElectronicLibrary.Api.Controllers
         public async Task<ActionResult> Pageable([FromQuery] GetPageableUsersDto model) =>
             await ExecuteQuery(async () => await _mediator.Send(GetPageableUsersQuery.Create(model)));
 
-        //getUserById
+        [HttpGet("{Id}")]
+        [ProducesResponseType(typeof(Response<UserListModel>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetById([FromRoute] GetUserDataByIdQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
 
     }
 }

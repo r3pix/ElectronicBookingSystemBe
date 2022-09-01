@@ -18,6 +18,6 @@ namespace ElectronicLibrary.Application.Repositories
         }
 
         public override async Task<User> GetByPredicate(Expression<Func<User, bool>> expression) =>
-            await _dbContext.Users.Include(x => x.Role).Include(x=>x.Identity).FirstOrDefaultAsync(expression);
+            await _dbContext.Users.Include(x => x.Role).Include(x=>x.Identity).Include(x=>x.Address).FirstOrDefaultAsync(expression);
     }
 }
