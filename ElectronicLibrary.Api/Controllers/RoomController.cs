@@ -43,7 +43,11 @@ namespace ElectronicLibrary.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult> Update([FromBody] UpdateRoomCommand command) =>
             await ExecuteCommand(async () => await _mediator.Send(command));
-        
+
+        [HttpGet("{Id}")]
+        [ProducesResponseType(typeof(Response<RoomListModel>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetById([FromRoute] GetRoomByIdQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
 
         [HttpGet("list")]
         [ProducesResponseType(typeof(Response<IEnumerable<RoomListModel>>), (int)HttpStatusCode.OK)]
@@ -55,11 +59,15 @@ namespace ElectronicLibrary.Api.Controllers
         public async Task<ActionResult> GetPageable([FromQuery] GetPageableRoomsDto model) =>
             await ExecuteQuery(async () => await _mediator.Send(GetPageableRoomsQuery.Create(model)));
 
-
         [HttpPut("edit-picture")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult> EditFile([FromForm] EditRoomPictureCommand command) =>
             await ExecuteCommand(async () => await _mediator.Send(command));
-        
+
+        [HttpGet("booked-days")]
+        [ProducesResponseType(typeof(Response<IEnumerable<DateTime>>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetBookedHours([FromQuery] GetOccupiedRoomDaysQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
+
     }
 }

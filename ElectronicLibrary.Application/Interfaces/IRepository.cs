@@ -26,6 +26,8 @@ namespace ElectronicLibrary.Application.Interfaces
         /// <returns>IEnumerable<typeparamref name="TEntity"/></returns>
         Task<IEnumerable<TEntity>> GetAll();
 
+        Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate);
+
         /// <summary>
         /// Gets entity by Id
         /// </summary>

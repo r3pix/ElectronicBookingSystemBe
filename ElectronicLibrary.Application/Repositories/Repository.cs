@@ -96,6 +96,12 @@ namespace ElectronicLibrary.Application.Repositories
             return entities;
         }
 
+        public virtual async Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate)
+        {
+            var entities = await _dbContext.Set<TEntity>().Where(predicate).ToListAsync();
+            return entities;
+        }
+
         /// <summary>
         /// Gets entity by Id
         /// </summary>
