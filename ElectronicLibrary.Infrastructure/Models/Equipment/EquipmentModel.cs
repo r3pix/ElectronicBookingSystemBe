@@ -21,6 +21,6 @@ namespace ElectronicBookingSystem.Infrastructure.Models.Equipment
         /// <summary>
         /// Photo of equipment
         /// </summary>
-        public string FileAddress { get; set; }
+        public Guid FileId { get; set; }
     }
 }

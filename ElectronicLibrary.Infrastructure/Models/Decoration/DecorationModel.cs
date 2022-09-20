@@ -21,6 +21,6 @@ namespace ElectronicBookingSystem.Infrastructure.Models.Decoration
         /// <summary>
         /// Photo of Decoration
         /// </summary>
-        public string FileAddress { get; set; }
+        public Guid FileId { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace ElectronicBookingSystem.Application.CQRS.Decoration.Queries
         public GetDecorationByIdQueryHandler(IDecorationRepository decorationRepository, IMapper mapper)
         {
             _decorationRepository = decorationRepository;
+            _mapper = mapper;
         }
 
         public async Task<Response<DecorationModel>> Handle(GetDecorationByIdQuery request, CancellationToken cancellationToken)

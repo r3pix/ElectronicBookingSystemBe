@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQRS\Booking\Queries\" />
     <Folder Include="CQRS\File\Commands\" />
   </ItemGroup>
 

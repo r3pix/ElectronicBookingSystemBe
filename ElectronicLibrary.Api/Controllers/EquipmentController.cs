@@ -43,7 +43,7 @@ namespace ElectronicLibrary.Api.Controllers
 
         [HttpGet("{Id}")]
         [ProducesResponseType(typeof(Response<EquipmentModel>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult> GetById([FromRoute] GetDecorationByIdQuery query) =>
+        public async Task<ActionResult> GetById([FromRoute] GetEquipmentByIdQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
 
         [HttpGet("pageable")]

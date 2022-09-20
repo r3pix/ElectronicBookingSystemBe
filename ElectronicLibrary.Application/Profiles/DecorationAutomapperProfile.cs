@@ -38,7 +38,8 @@ namespace ElectronicLibrary.Application.Profiles
 
             CreateMap<Decoration, DecorationModel>()
                 .ForMember(dest => dest.Cost, opt => opt.MapFrom(src => src.Cost))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest =>dest.FileId, opt=>opt.MapFrom(src=>src.Files.OrderByDescending(x=>x.CreateDate).First().Id));
             //.AfterMap<MapFileAddressAction>();
 
             CreateMap<UpdateDecorationCommand, Decoration>();

@@ -14,16 +14,16 @@ namespace ElectronicBookingSystem.Application.CQRS.Room.Queries
 {
     public class GetOccupiedRoomDaysQueryHandler : IRequestHandler<GetOccupiedRoomDaysQuery, Response<IEnumerable<DateTime>>>
     {
-        private readonly IRepository<Booking> _repository;
+        private readonly IRepository<Domain.Entities.Booking> _repository;
 
-        public GetOccupiedRoomDaysQueryHandler(IRepository<Booking> repository)
+        public GetOccupiedRoomDaysQueryHandler(IRepository<Domain.Entities.Booking> repository)
         {
             _repository = repository;
         }
 
         public async Task<Response<IEnumerable<DateTime>>> Handle(GetOccupiedRoomDaysQuery request, CancellationToken cancellationToken)
         {
-            var result = await _repository.GetAll(x => x.Id == request.Id);
+            var result = await _repository.GetAll(x => x.RoomId == request.Id);
             return new Response<IEnumerable<DateTime>>(result.Select(x=>x.Date.ToUTCKind()));
         }
     }

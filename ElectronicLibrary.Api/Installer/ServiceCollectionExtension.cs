@@ -40,12 +40,14 @@ namespace ElectronicLibrary.Infrastructure.Extensions
             .AddTransient<IFileService, FileService>()
             .AddTransient<ICurrentUserService, CurrentUserService>()
             .AddTransient<ICategoryPageableRepository, CategoryPageableRepository>()
-            .AddTransient<IRoomPageableRepository,RoomPageableRepository>()
+            .AddTransient<IRoomPageableRepository, RoomPageableRepository>()
             .AddTransient<ICategoryRepository, CategoryRepository>()
             .AddTransient<IPageableDecorationsRepository, PageableDecorationsRepository>()
             .AddTransient<IPageableEquipmentRepository, PageableEquipmentRepository>()
             .AddTransient<IPageableServicesRepository, PageableServicesRepository>()
-            .AddTransient<IUserPageableRepository, UserPageableRepository>();
+            .AddTransient<IUserPageableRepository, UserPageableRepository>()
+            .AddTransient<IBookingPageableRepository, BookingPageableRepository>();
+
 
             //services.AddTransient(typeof(IPageableRepository<,>), typeof(PageableRepository<,>));
 
