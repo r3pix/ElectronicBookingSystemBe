@@ -37,7 +37,7 @@ namespace ElectronicBookingSystem.Application.Repositories
             }
             else if (_currentUserService.Role == "Admin")
             {
-                return query.Where(x => x.UserId.ToString() == _currentUserService.Id);
+                return query;
             }
             else
                 throw new Exception("User does have permission to get this data");
