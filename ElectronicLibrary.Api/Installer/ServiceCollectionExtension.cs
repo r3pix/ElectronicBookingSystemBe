@@ -1,12 +1,14 @@
 ﻿using ElectronicBookingSystem.Application.Interfaces;
 using ElectronicBookingSystem.Application.Repositories;
 using ElectronicBookingSystem.Infrastructure.Interfaces;
+using ElectronicBookingSystem.Infrastructure.Models;
 using ElectronicBookingSystem.Infrastructure.Services;
 using ElectronicLibrary.Application.Interfaces;
 using ElectronicLibrary.Application.Repositories;
 using ElectronicLibrary.Infrastructure.Models;
 using ElectronicLibrary.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -48,7 +50,7 @@ namespace ElectronicLibrary.Infrastructure.Extensions
             .AddTransient<IUserPageableRepository, UserPageableRepository>()
             .AddTransient<IBookingPageableRepository, BookingPageableRepository>();
 
-
+            services.AddTransient<IEmailSender, EmailSender>();
             //services.AddTransient(typeof(IPageableRepository<,>), typeof(PageableRepository<,>));
 
         }
@@ -61,7 +63,8 @@ namespace ElectronicLibrary.Infrastructure.Extensions
         /// <returns>IServiceCollection</returns>
         public static void AddConfigurationModels(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton(configuration.GetSection("FileConfiguration").Get<FileConfiguration>());
+            services.AddSingleton(configuration.GetSection("FileConfiguration").Get<FileConfiguration>())
+                    .AddSingleton(configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
         }
 
         public static void AddCustomCors(this IServiceCollection services, IConfiguration configuration)
