@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ElectronicLibrary.Persistance;
 
 namespace ElectronicLibrary.Infrastructure.Extensions
 {
@@ -34,21 +35,22 @@ namespace ElectronicLibrary.Infrastructure.Extensions
         {
             //services.AddTransient<IElectronicLibraryDbContext,ElectronicLibraryDbContext>();
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>))
-            .AddTransient<IDecorationRepository, DecorationRepository>()
-            .AddTransient<IEquipmentRepository, EquipmentRepository>()
-            .AddTransient<IServiceRepository, ServiceRepository>()
-            .AddTransient<IRoomRepository, RoomRepository>()
-            .AddTransient<IUserRepository, UserRepository>()
-            .AddTransient<IFileService, FileService>()
-            .AddTransient<ICurrentUserService, CurrentUserService>()
-            .AddTransient<ICategoryPageableRepository, CategoryPageableRepository>()
-            .AddTransient<IRoomPageableRepository, RoomPageableRepository>()
-            .AddTransient<ICategoryRepository, CategoryRepository>()
-            .AddTransient<IPageableDecorationsRepository, PageableDecorationsRepository>()
-            .AddTransient<IPageableEquipmentRepository, PageableEquipmentRepository>()
-            .AddTransient<IPageableServicesRepository, PageableServicesRepository>()
-            .AddTransient<IUserPageableRepository, UserPageableRepository>()
-            .AddTransient<IBookingPageableRepository, BookingPageableRepository>();
+                .AddScoped<IElectronicBookingSystemDbContext,ElectronicBookingSystemDbContext>()   
+                .AddTransient<IDecorationRepository, DecorationRepository>()
+                .AddTransient<IEquipmentRepository, EquipmentRepository>()
+                .AddTransient<IServiceRepository, ServiceRepository>()
+                .AddTransient<IRoomRepository, RoomRepository>()
+                .AddTransient<IUserRepository, UserRepository>()
+                .AddTransient<IFileService, FileService>()
+                .AddTransient<ICurrentUserService, CurrentUserService>()
+                .AddTransient<ICategoryPageableRepository, CategoryPageableRepository>()
+                .AddTransient<IRoomPageableRepository, RoomPageableRepository>()
+                .AddTransient<ICategoryRepository, CategoryRepository>()
+                .AddTransient<IPageableDecorationsRepository, PageableDecorationsRepository>()
+                .AddTransient<IPageableEquipmentRepository, PageableEquipmentRepository>()
+                .AddTransient<IPageableServicesRepository, PageableServicesRepository>()
+                .AddTransient<IUserPageableRepository, UserPageableRepository>()
+                .AddTransient<IBookingPageableRepository, BookingPageableRepository>();
 
             services.AddTransient<IEmailSender, EmailSender>();
             //services.AddTransient(typeof(IPageableRepository<,>), typeof(PageableRepository<,>));
@@ -64,7 +66,8 @@ namespace ElectronicLibrary.Infrastructure.Extensions
         public static void AddConfigurationModels(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton(configuration.GetSection("FileConfiguration").Get<FileConfiguration>())
-                    .AddSingleton(configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+                    .AddSingleton(configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>())
+                    .AddSingleton(configuration.GetSection("AppData").Get<AppData>());
         }
 
         public static void AddCustomCors(this IServiceCollection services, IConfiguration configuration)

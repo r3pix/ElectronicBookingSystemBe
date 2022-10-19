@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ElectronicLibrary.Persistance
 {
-    public class ElectronicBookingSystemDbContext : DbContext
+    public class ElectronicBookingSystemDbContext : DbContext, IElectronicBookingSystemDbContext
     {
         private readonly ICurrentUserService _currentUserService;
 
@@ -21,6 +21,7 @@ namespace ElectronicLibrary.Persistance
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
         //dodacsety i  changetracker, przeciazyc savechanges
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

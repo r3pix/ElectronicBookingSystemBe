@@ -21,11 +21,11 @@ namespace ElectronicBookingSystem.Infrastructure.Services
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            using (var client = new SmtpClient() { EnableSsl = true, Port = _emailConfiguration.Port, Host = _emailConfiguration.Host, UseDefaultCredentials = false, Credentials = new NetworkCredential(_emailConfiguration.Username, _emailConfiguration.Password)})
+            using (var client = new SmtpClient { EnableSsl = true, Port = _emailConfiguration.Port, Host = _emailConfiguration.Host, UseDefaultCredentials = false, Credentials = new NetworkCredential(_emailConfiguration.Username, _emailConfiguration.Password)})
             {
                 try
                 {
-                    await client.SendMailAsync(new MailMessage(_emailConfiguration.Username, email, subject, htmlMessage));
+                    await client.SendMailAsync(new MailMessage { From = new MailAddress(_emailConfiguration.Username), To = { new MailAddress(email) }, Body = htmlMessage, IsBodyHtml = true });
                 }
                 catch(Exception e)
                 {
