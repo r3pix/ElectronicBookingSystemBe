@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using ElectronicBookingSystem.Infrastructure.Models.Booking;
+using ElectronicLibrary.Infrastructure.Extensions;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ElectronicBookingSystem.Application.CQRS.Booking.Queries
 {
-    public class CancelBookingCommand : IRequest
+    public class GetBookingInvoiceDataQuery : IRequest<Response<BookingInvoiceModel>> 
     {
         public Guid Id { get; set; }
     }

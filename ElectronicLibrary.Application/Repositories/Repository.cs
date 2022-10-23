@@ -120,5 +120,8 @@ namespace ElectronicLibrary.Application.Repositories
 
         public async Task<int> SaveChangesAsync() =>
             await _dbContext.SaveChangesAsync();
+
+        public virtual IQueryable<TEntity> GetQueryable() =>
+            _dbContext.Set<TEntity>().AsQueryable();
     }
 }

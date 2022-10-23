@@ -1,4 +1,5 @@
-﻿using ElectronicBookingSystem.Application.CQRS.Booking.Queries;
+﻿using ElectronicBookingSystem.Application.CQRS.Booking.Commands;
+using ElectronicBookingSystem.Application.CQRS.Booking.Queries;
 using ElectronicBookingSystem.Infrastructure.Models.Booking;
 using ElectronicLibrary.Application.CQRS.Booking.Commands;
 using ElectronicLibrary.Infrastructure.Extensions;
@@ -34,5 +35,10 @@ namespace ElectronicLibrary.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult> CancelBooking([FromRoute] CancelBookingCommand command) =>
             await ExecuteCommand(async () => await _mediator.Send(command));
+
+        [HttpGet("invoice-data/{Id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetInvoiceData([FromRoute] GetBookingInvoiceDataQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
     }
 }

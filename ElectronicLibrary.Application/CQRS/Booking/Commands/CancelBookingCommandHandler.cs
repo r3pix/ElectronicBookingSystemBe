@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ElectronicBookingSystem.Application.CQRS.Booking.Queries
+namespace ElectronicBookingSystem.Application.CQRS.Booking.Commands
 {
     public class CancelBookingCommandHandler : IRequestHandler<CancelBookingCommand>
     {
