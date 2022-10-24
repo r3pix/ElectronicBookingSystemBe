@@ -25,7 +25,13 @@ namespace ElectronicBookingSystem.Infrastructure.Services
             {
                 try
                 {
-                    await client.SendMailAsync(new MailMessage { From = new MailAddress(_emailConfiguration.Username), To = { new MailAddress(email) }, Body = htmlMessage, IsBodyHtml = true });
+                    await client.SendMailAsync(new MailMessage 
+                    { 
+                        From = new MailAddress(_emailConfiguration.Username),
+                        To = { new MailAddress(email) }, Body = htmlMessage, 
+                        IsBodyHtml = true, 
+                        Subject = subject 
+                    });
                 }
                 catch(Exception e)
                 {
