@@ -50,7 +50,8 @@ namespace ElectronicLibrary.Infrastructure.Extensions
                 .AddTransient<IPageableEquipmentRepository, PageableEquipmentRepository>()
                 .AddTransient<IPageableServicesRepository, PageableServicesRepository>()
                 .AddTransient<IUserPageableRepository, UserPageableRepository>()
-                .AddTransient<IBookingPageableRepository, BookingPageableRepository>();
+                .AddTransient<IBookingPageableRepository, BookingPageableRepository>()
+                .AddTransient<IInlineEmailMessageService, InlineEmailMessageService>();
 
             services.AddTransient<IEmailSender, EmailSender>();
             //services.AddTransient(typeof(IPageableRepository<,>), typeof(PageableRepository<,>));

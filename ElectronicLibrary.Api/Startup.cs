@@ -59,6 +59,7 @@ namespace ElectronicLibrary.Api
             });
             //because it injects context
             services.AddScoped<RoleSeeder>();
+            services.AddScoped<UserSeeder>();
 
             services.AddInfrastructureServices();
             services.AddConfigurationModels(Configuration);
@@ -76,10 +77,11 @@ namespace ElectronicLibrary.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleSeeder seeder)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleSeeder seeder, UserSeeder userSeeder)
         {
             seeder.Seed();
             //Task.Run(async () => await seeder.Seed());
+            Task.Run(async () => await userSeeder.Seed());
 
             if (env.IsDevelopment())
             {
