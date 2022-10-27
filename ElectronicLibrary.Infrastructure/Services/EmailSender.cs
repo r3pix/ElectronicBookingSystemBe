@@ -28,7 +28,8 @@ namespace ElectronicBookingSystem.Infrastructure.Services
                     await client.SendMailAsync(new MailMessage 
                     { 
                         From = new MailAddress(_emailConfiguration.Username),
-                        To = { new MailAddress(email) }, Body = htmlMessage, 
+                        To = { new MailAddress(email) }, 
+                        Body = htmlMessage, 
                         IsBodyHtml = true, 
                         Subject = subject 
                     });
