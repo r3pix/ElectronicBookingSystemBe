@@ -45,5 +45,6 @@ namespace ElectronicBookingSystem.Domain.Entities
         /// Reference to the booking class
         /// </summary>
         public virtual IEnumerable<Booking> Bookings { get; set; }
+        public virtual IEnumerable<Opinion> Opinions { get; set; }
     }
 }

@@ -64,5 +64,7 @@ namespace ElectronicBookingSystem.Domain.Entities
         public virtual IEnumerable<Booking> Bookings { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public virtual IEnumerable<Opinion> Opinions { get; set; }
     }
 }
