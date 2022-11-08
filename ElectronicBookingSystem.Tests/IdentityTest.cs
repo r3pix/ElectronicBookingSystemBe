@@ -2,6 +2,8 @@
 using ElectronicBookingSystem.Application.CQRS.Identity.Commands;
 using ElectronicBookingSystem.Application.Profiles;
 using ElectronicBookingSystem.Domain.Entities;
+using ElectronicBookingSystem.Infrastructure.Interfaces;
+using ElectronicBookingSystem.Infrastructure.Services;
 using ElectronicLibrary.Application.Interfaces;
 using ElectronicLibrary.Application.Repositories;
 using ElectronicLibrary.Persistance;
@@ -44,7 +46,9 @@ namespace ElectronicBookingSystem.Tests
             var profile = new IdentityAutomapperProfile();
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(profile));
             var mapper = new Mapper(configuration);
-            var dbContext = new ElectronicBookingSystemDbContext(_options);
+            var currentUser = new Mock<ICurrentUserService>();
+            currentUser.Setup(x => x.Email).Returns("system");
+            var dbContext = new ElectronicBookingSystemDbContext(_options, currentUser.Object);
             var repository = new Repository<Identity>(dbContext, mapper);
 
             //act

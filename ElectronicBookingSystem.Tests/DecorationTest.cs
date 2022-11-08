@@ -3,6 +3,8 @@ using ElectronicBookingSystem.Application.CQRS.Decoration.Commands;
 using ElectronicBookingSystem.Application.CQRS.Decoration.Queries;
 using ElectronicBookingSystem.Application.Repositories;
 using ElectronicBookingSystem.Domain.Entities;
+using ElectronicBookingSystem.Infrastructure.Interfaces;
+using ElectronicBookingSystem.Infrastructure.Services;
 using ElectronicLibrary.Application.CQRS.Decoration.Commands;
 using ElectronicLibrary.Application.CQRS.Decoration.Queries;
 using ElectronicLibrary.Application.Profiles;
@@ -59,7 +61,9 @@ namespace ElectronicBookingSystem.Tests
             var profile = new DecorationAutomapperProfile();
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(profile));
             var mapper = new Mapper(configuration);
-            var dbContext = new ElectronicBookingSystemDbContext(_options);
+            var currentUser = new Mock<ICurrentUserService>();
+            currentUser.Setup(x => x.Email).Returns("system");
+            var dbContext = new ElectronicBookingSystemDbContext(_options, currentUser.Object);
             var repository = new PageableDecorationsRepository(dbContext);
 
             //act
@@ -89,7 +93,9 @@ namespace ElectronicBookingSystem.Tests
         public async Task WhenGettingForSelect_ItShouldReturnData()
         {
             //arrange
-            var dbContext = new ElectronicBookingSystemDbContext(_options);
+            var currentUser = new Mock<ICurrentUserService>();
+            currentUser.Setup(x => x.Email).Returns("system");
+            var dbContext = new ElectronicBookingSystemDbContext(_options, currentUser.Object);
             var mapper = new Mock<IMapper>();
             var repository = new DecorationRepository(dbContext, mapper.Object);
             //act
@@ -106,7 +112,9 @@ namespace ElectronicBookingSystem.Tests
         public async Task WhenGettingById_ItShouldReturnData()
         {
             //arrange
-            var dbContext = new ElectronicBookingSystemDbContext(_options);
+            var currentUser = new Mock<ICurrentUserService>();
+            currentUser.Setup(x => x.Email).Returns("system");
+            var dbContext = new ElectronicBookingSystemDbContext(_options, currentUser.Object);
             var mapper = new Mock<IMapper>();
             var repository = new DecorationRepository(dbContext, mapper.Object);
 

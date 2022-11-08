@@ -4,6 +4,8 @@ using ElectronicBookingSystem.Application.CQRS.Category.Queries;
 using ElectronicBookingSystem.Application.Profiles;
 using ElectronicBookingSystem.Application.Repositories;
 using ElectronicBookingSystem.Domain.Entities;
+using ElectronicBookingSystem.Infrastructure.Interfaces;
+using ElectronicBookingSystem.Infrastructure.Services;
 using ElectronicLibrary.Application.Repositories;
 using ElectronicLibrary.Persistance;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +22,7 @@ namespace ElectronicBookingSystem.Tests
 {
     public class CategoryTest
     {
-        private readonly DbContextOptions<ElectronicBookingSystemDbContext> options = new DbContextOptionsBuilder<ElectronicBookingSystemDbContext>()
+        private readonly DbContextOptions<ElectronicBookingSystemDbContext> _options = new DbContextOptionsBuilder<ElectronicBookingSystemDbContext>()
             .UseInMemoryDatabase(databaseName: "Test_Booking_Category").Options;
 
         [Fact]
@@ -73,7 +75,9 @@ namespace ElectronicBookingSystem.Tests
             var profile = new CategoryAutomapperProfile();
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(profile));
             var mapper = new Mapper(configuration);
-            var dbContext = new ElectronicBookingSystemDbContext(options);
+            var currentUser = new Mock<ICurrentUserService>();
+            currentUser.Setup(x => x.Email).Returns("system");
+            var dbContext = new ElectronicBookingSystemDbContext(_options, currentUser.Object);
             var repository = new CategoryPageableRepository(dbContext);
 
             //act
@@ -103,7 +107,9 @@ namespace ElectronicBookingSystem.Tests
         public async Task WhenGettingForSelect_ItShouldReturnData()
         {
             //arrange
-            var dbContext = new ElectronicBookingSystemDbContext(options);
+            var currentUser = new Mock<ICurrentUserService>();
+            currentUser.Setup(x => x.Email).Returns("system");
+            var dbContext = new ElectronicBookingSystemDbContext(_options, currentUser.Object);
             var mapper = new Mock<IMapper>();
             var repository = new CategoryRepository(dbContext, mapper.Object);
             //act

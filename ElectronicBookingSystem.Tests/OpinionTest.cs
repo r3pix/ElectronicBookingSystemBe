@@ -2,9 +2,12 @@
 using ElectronicBookingSystem.Application.CQRS.Opinion.Queries;
 using ElectronicBookingSystem.Application.Profiles;
 using ElectronicBookingSystem.Domain.Entities;
+using ElectronicBookingSystem.Infrastructure.Interfaces;
+using ElectronicBookingSystem.Infrastructure.Services;
 using ElectronicLibrary.Application.Repositories;
 using ElectronicLibrary.Persistance;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +30,9 @@ namespace ElectronicBookingSystem.Tests
             var profile = new OpinionAutomapperProfile();
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(profile));
             var mapper = new Mapper(configuration);
-            var dbContext = new ElectronicBookingSystemDbContext(_options);
+            var currentUser = new Mock<ICurrentUserService>();
+            currentUser.Setup(x => x.Email).Returns("system");
+            var dbContext = new ElectronicBookingSystemDbContext(_options, currentUser.Object);
             var repository = new Repository<Booking>(dbContext, mapper);
             //act
 
