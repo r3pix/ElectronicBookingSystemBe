@@ -22,7 +22,14 @@ namespace ElectronicLibrary.Persistance
         public DbSet<Role> Roles { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<File> Files { get; set; }
+        public DbSet<Identity> Identities { get; set; }
+        public DbSet<Opinion> Opinions { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+
         //dodacsety i  changetracker, przeciazyc savechanges
+
+
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -52,6 +59,16 @@ namespace ElectronicLibrary.Persistance
                     ((BaseEntity)entry.Entity).CreateEmail = _currentUserService.Email;
                 }
             }
+        }
+
+        public ElectronicBookingSystemDbContext()
+        {
+
+        }
+
+        public ElectronicBookingSystemDbContext(DbContextOptions<ElectronicBookingSystemDbContext> options) : base(options)
+        {
+
         }
 
         public ElectronicBookingSystemDbContext(DbContextOptions<ElectronicBookingSystemDbContext> options, ICurrentUserService currentUserService) : base(options)

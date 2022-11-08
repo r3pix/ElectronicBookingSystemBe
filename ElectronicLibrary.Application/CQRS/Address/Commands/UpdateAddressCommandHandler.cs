@@ -25,6 +25,10 @@ namespace ElectronicBookingSystem.Application.CQRS.Address.Commands
         public async Task<Unit> Handle(UpdateAddressCommand request, CancellationToken cancellationToken)
         {
             var entity = await _repository.GetById(request.Id);
+            if(entity is null)
+            {
+                throw new Exception("Data is not present");
+            }
             _mapper.Map(request,entity);
             await _repository.SaveChangesAsync();
             return default;
