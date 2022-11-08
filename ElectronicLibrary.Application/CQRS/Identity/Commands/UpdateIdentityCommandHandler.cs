@@ -25,6 +25,10 @@ namespace ElectronicBookingSystem.Application.CQRS.Identity.Commands
         public async Task<Unit> Handle(UpdateIdentityCommand request, CancellationToken cancellationToken)
         {
             var entity = await _repository.GetById(request.Id);
+            if(entity is null)
+            {
+                throw new Exception("Not found");
+            }
             _mapper.Map(request, entity);
             await _repository.SaveChangesAsync();
             return default;

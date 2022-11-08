@@ -27,6 +27,10 @@ namespace ElectronicBookingSystem.Application.CQRS.Booking.Queries
         public async Task<Response<BookingInvoiceModel>> Handle(GetBookingInvoiceDataQuery request, CancellationToken cancellationToken)
         {
             var data = await GetBookingData(request.Id);
+            if(data is null)
+            {
+                throw new Exception("Not found");
+            }
             return new Response<BookingInvoiceModel>(_mapper.Map<BookingInvoiceModel>(data));
         }
 

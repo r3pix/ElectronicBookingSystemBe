@@ -21,7 +21,7 @@ namespace ElectronicBookingSystem.Tests
     public class CategoryTest
     {
         private readonly DbContextOptions<ElectronicBookingSystemDbContext> options = new DbContextOptionsBuilder<ElectronicBookingSystemDbContext>()
-            .UseInMemoryDatabase(databaseName: "Test_Booking").Options;
+            .UseInMemoryDatabase(databaseName: "Test_Booking_Category").Options;
 
         [Fact]
         public async Task WhenProvidedWithData_ItShouldCreateEntity()
@@ -67,7 +67,7 @@ namespace ElectronicBookingSystem.Tests
         }
 
         [Fact]
-        public async Task WhenGettinPageable_ItShouldReturnData()
+        public async Task WhenGettingPageable_ItShouldReturnData()
         {
             //arrange
             var profile = new CategoryAutomapperProfile();
@@ -95,6 +95,23 @@ namespace ElectronicBookingSystem.Tests
             var handler = new GetPageableCategoriesQueryHandler(repository, mapper);
 
             var result = await handler.Handle(query, CancellationToken.None);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public async Task WhenGettingForSelect_ItShouldReturnData()
+        {
+            //arrange
+            var dbContext = new ElectronicBookingSystemDbContext(options);
+            var mapper = new Mock<IMapper>();
+            var repository = new CategoryRepository(dbContext, mapper.Object);
+            //act
+            var query = new GetCategoriesForSelectQuery();
+            var handler = new GetCategoriesForSelectQueryHandler(repository);
+
+            var result = await handler.Handle(query, CancellationToken.None);
+            //assert
 
             Assert.NotNull(result);
         }

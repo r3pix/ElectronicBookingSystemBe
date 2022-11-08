@@ -1,0 +1,36 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "ConnectionStrings": {
+    //"Library": "Server=(localdb)\\localdb;Database=TEST_BOOKING; Trusted_Connection=True;",
+    //"Library": "Server=(localdb)\\MSSQLLocalDB;Database=TEST_BOOKING; Trusted_Connection=True;"
+    "Library": "Server=localhost; Database=TEST_BOOKING; Trusted_Connection=True;"
+  },
+  "FileConfiguration": {
+    //"UploadPath": "C:\\Programowanie\\Uploads",
+    "UploadPath": "/Users/piotrnowek/Documents/Uploads",
+    "FileControllerAddress": "http://localhost:49841/File/{0}"
+  },
+  "CorsConfiguration": {
+    "AllowedHosts": [ "http://localhost:4200" ]
+  },
+  "JWTConfiguration": {
+    "Issuer": "BookingSystemClient",
+    "Audience": "BookingSystemApi",
+    "SecretKey": "gRzeGoRZFloRydDa"
+  },
+  "EmailConfiguration": {
+    "Host": "smtp.gmail.com", 
+    "Username": "r3testpix@gmail.com",
+    "Password": "ehcdoobeqcabbsle", //haslo do aplikacji
+    "Port": 587
+  },
+  "AppData": {
+    "ApplicationAddress": "http://localhost:4200/home"
+  }
+}

@@ -26,6 +26,10 @@ namespace ElectronicBookingSystem.Application.CQRS.Decoration.Queries
         public async Task<Response<DecorationModel>> Handle(GetDecorationByIdQuery request, CancellationToken cancellationToken)
         {
             var entity = await _decorationRepository.GetById(request.Id);
+            if(entity is null)
+            {
+                throw new Exception("Not found");
+            }
             var result = _mapper.Map<DecorationModel>(entity);
             return new Response<DecorationModel>(result);
         }

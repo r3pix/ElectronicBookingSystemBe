@@ -49,14 +49,14 @@ namespace ElectronicLibrary.Persistance
                 if(entry.State == EntityState.Modified)
                 {
                     ((BaseEntity)entry.Entity).LMDate = DateTime.UtcNow;
-                    ((BaseEntity)entry.Entity).LMEmail = _currentUserService.Email;
+                    ((BaseEntity)entry.Entity).LMEmail = _currentUserService?.Email;
                 }
                 else if(entry.State == EntityState.Added)
                 {
                     ((BaseEntity)entry.Entity).LMDate = DateTime.UtcNow;
-                    ((BaseEntity)entry.Entity).LMEmail = _currentUserService.Email;
+                    ((BaseEntity)entry.Entity).LMEmail = _currentUserService?.Email;
                     ((BaseEntity)entry.Entity).CreateDate = DateTime.UtcNow;
-                    ((BaseEntity)entry.Entity).CreateEmail = _currentUserService.Email;
+                    ((BaseEntity)entry.Entity).CreateEmail = _currentUserService?.Email;
                 }
             }
         }
