@@ -24,7 +24,7 @@ namespace ElectronicBookingSystem.Tests
             dbContext.Setup(x => x.Set<Identity>()).Returns(GetMockedIdentitySet().Object);
             dbContext.Setup(x => x.Set<Address>()).Returns(GetMockedAddressSet().Object);
             dbContext.Setup(x => x.Set<User>()).Returns(GetMockedUserSet().Object);
-            dbContext.Setup(x => x.SaveChangesAsync(System.Threading.CancellationToken.None)).Returns(Task.FromResult(1));
+            dbContext.Setup(x => x.SaveChangesAsync(CancellationToken.None)).Returns(Task.FromResult(1));
 
             return dbContext;
         }
