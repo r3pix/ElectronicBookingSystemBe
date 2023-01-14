@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ElectronicLibrary.Application.CQRS.User.Commands.RegisterUserCommand" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAIIEAAAAQAAAAAAAACAAIAAAAAAAg=</HashCode>
+      <FileName>CQRS\User\Commands\RegisterUserCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicLibrary.Application.CQRS.User.Commands.RegisterUserCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAgAAAAAAAAAAABAAAAAAKAAAIAAAAAAAAQAAA=</HashCode>
+      <FileName>CQRS\User\Commands\RegisterUserCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_emailSender" />
+      <Field Name="_inlineEmailMessageService" />
+      <Field Name="_mapper" />
+      <Field Name="_passwordHasher" />
+      <Field Name="_roleRepository" />
+      <Field Name="_userRepository" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.User.Querries.GetPageableUsersQuery" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAABAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\User\Querries\GetPageableUsersQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.User.Querries.GetPageableUsersQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\User\Querries\GetPageableUsersQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_mapper" />
+      <Field Name="_repository" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.User.Querries.GetUserDataByIdQuery" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\User\Querries\GetUserDataByIdQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.User.Querries.GetUserDataByIdQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\User\Querries\GetUserDataByIdQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_mapper" />
+      <Field Name="_repository" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.User.Querries.GetUserDataQuery" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\User\Querries\GetUserDataQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.User.Querries.GetUserDataQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\User\Querries\GetUserDataQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_mapper" />
+      <Field Name="_userRepository" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicLibrary.Application.CQRS.User.Querries.LoginUserQuery" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\User\Querries\LoginUserQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicLibrary.Application.CQRS.User.Querries.LoginUserQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAgAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAAAAA=</HashCode>
+      <FileName>CQRS\User\Querries\LoginUserQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_configuration" />
+      <Field Name="_userRepository" />
+      <Field Name="_passwordHasher" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Microsoft.Extensions.Configuration.IConfiguration" Collapsed="true">
+    <Position X="10.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="ElectronicLibrary.Application.Interfaces.IRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="10.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAEAACAAAAACAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microsoft.AspNetCore.Identity.IPasswordHasher&lt;TUser&gt;" Collapsed="true">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="AutoMapper.IMapper" Collapsed="true">
+    <Position X="10.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="ElectronicLibrary.Application.Repositories.IUserRepository" Collapsed="true">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microsoft.AspNetCore.Identity.UI.Services.IEmailSender" Collapsed="true">
+    <Position X="10.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="ElectronicBookingSystem.Infrastructure.Interfaces.IInlineEmailMessageService" Collapsed="true">
+    <Position X="10.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="ElectronicBookingSystem.Application.Interfaces.IUserPageableRepository" Collapsed="true">
+    <Position X="10.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IUserPageableRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

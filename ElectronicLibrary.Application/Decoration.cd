@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ElectronicBookingSystem.Application.CQRS.Decoration.Commands.EditDecorationPhotoCommand" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Commands\EditDecorationPhotoCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.Decoration.Commands.EditDecorationPhotoCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAIAAAAAAAAAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Commands\EditDecorationPhotoCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repository" />
+      <Field Name="_fileService" />
+      <Field Name="_fileConfiguration" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.Decoration.Commands.UpdateDecorationCommand" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Commands\UpdateDecorationCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.Decoration.Commands.UpdateDecorationCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="4.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Commands\UpdateDecorationCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repository" />
+      <Field Name="_mapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.Decoration.Queries.GetDecorationByIdQuery" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Queries\GetDecorationByIdQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.Decoration.Queries.GetDecorationByIdQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Queries\GetDecorationByIdQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_decorationRepository" />
+      <Field Name="_mapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.Decoration.Queries.GetPageableDecorationsQuery" BaseTypeListCollapsed="true">
+    <Position X="6" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAABAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Queries\GetPageableDecorationsQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.CQRS.Decoration.Queries.GetPageableDecorationsQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Queries\GetPageableDecorationsQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repository" />
+      <Field Name="_mapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicLibrary.Infrastructure.Models.FileConfiguration" Collapsed="true">
+    <Position X="13" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ElectronicLibrary.Application.CQRS.Decoration.Queries.GetDecorationsForSelectQuery" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Queries\GetDecorationsForSelectQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicLibrary.Application.CQRS.Decoration.Queries.GetDecorationsForSelectQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Queries\GetDecorationsForSelectQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repository" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicLibrary.Application.CQRS.Decoration.Commands.AddDecorationCommand" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Commands\AddDecorationCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ElectronicLibrary.Application.CQRS.Decoration.Commands.AddDecorationCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAIgAAAAABAAAAAAAAAAMAAAAAAAAAAAA=</HashCode>
+      <FileName>CQRS\Decoration\Commands\AddDecorationCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_decorationRepository" />
+      <Field Name="_fileRepository" />
+      <Field Name="_fileConfiguration" />
+      <Field Name="_fileService" />
+      <Field Name="_mapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ElectronicLibrary.Infrastructure.Services.IFileService" Collapsed="true">
+    <Position X="13" Y="1.25" Width="2.25" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="ElectronicLibrary.Application.Interfaces.IRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAEAACAAAAACAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AutoMapper.IMapper" Collapsed="true">
+    <Position X="12.75" Y="3.25" Width="2.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="ElectronicBookingSystem.Application.Interfaces.IPageableDecorationsRepository" Collapsed="true">
+    <Position X="12.75" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPageableDecorationsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ElectronicLibrary.Application.Interfaces.IDecorationRepository" Collapsed="true">
+    <Position X="12.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\IDecorationRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

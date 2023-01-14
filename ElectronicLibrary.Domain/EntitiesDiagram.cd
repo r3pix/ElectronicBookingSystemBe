@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Address">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAIIEAAAAgAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Entities\Address.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.BaseEntity">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAABAAAAIAA=</HashCode>
+      <FileName>Entities\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.BaseEntity&lt;TKey&gt;">
+    <Position X="10.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Booking">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABICBCAAAgAAABABAAAIwAIAAAQAABAAAAACAAAAA=</HashCode>
+      <FileName>Entities\Booking.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+      <Property Name="Service" />
+      <Property Name="Room" />
+      <Property Name="Equipment" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Category">
+    <Position X="26.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQCAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Category.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Rooms" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Decoration">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAABQAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Entities\Decoration.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Files" />
+      <Property Name="Bookings" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Equipment">
+    <Position X="13.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAABQAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Entities\Equipment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Files" />
+      <Property Name="Bookings" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.File">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAABCAAAAAAAAABAAAAQAIAAAAABAAAAAACBAAAA=</HashCode>
+      <FileName>Entities\File.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Decoration" />
+      <Property Name="Equipment" />
+      <Property Name="Room" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Identity">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Entities\Identity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Opinion">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAGAAAAAAAAABAAAAgAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Entities\Opinion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+      <Property Name="Room" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Role">
+    <Position X="15.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Role.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Users" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Room">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABgAAAAABAAgAgAAAAAAAFRAAAABAAAAAAAAAAAACIA=</HashCode>
+      <FileName>Entities\Room.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Bookings" />
+      <Property Name="Files" />
+      <Property Name="Opinions" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.Service">
+    <Position X="23.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAABQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Bookings" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Domain.Entities.User">
+    <Position X="28.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiAAAIAACAgAAAAEAAAAAAAAAAAAAACAEAAAAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Address" />
+      <Property Name="Bookings" />
+      <Property Name="Identity" />
+      <Property Name="Opinions" />
+      <Property Name="Role" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="System.Collections.Generic.IEnumerable&lt;T&gt;" Collapsed="true">
+    <Position X="13.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ElectronicBookingSystem.Application.Decorators.EmailDecorator">
+    <Position X="2.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAACAAAAAAAAAAAABAAAAAAAAQAAA=</HashCode>
+      <FileName>Decorators\EmailDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.Decorators.NotificationDecorator">
+    <Position X="5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Decorators\NotificationDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.Decorators.NotificationHandler">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Decorators\NotificationHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Application.Decorators.EmailHandler">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAAAAAAAIAAAAAAAAAAAABAAAAAAAAAAIA=</HashCode>
+      <FileName>Decorators\EmailHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -25,6 +25,7 @@ using AutoMapper;
 using ElectronicLibrary.Infrastructure.Models;
 using ElectronicBookingSystem.Persistance.Seeder;
 using ElectronicBookingSystem.Domain.Entities;
+using ElectronicBookingSystem.Application.Hubs;
 
 namespace ElectronicLibrary.Api
 {
@@ -101,12 +102,14 @@ namespace ElectronicLibrary.Api
             app.UseRouting();
             app.UseCors("AllowedHosts");
 
+
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<NotificationHub>("/notification");
             });
         }
     }

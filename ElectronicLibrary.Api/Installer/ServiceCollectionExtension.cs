@@ -54,6 +54,7 @@ namespace ElectronicLibrary.Infrastructure.Extensions
                 .AddTransient<IInlineEmailMessageService, InlineEmailMessageService>();
 
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddSignalR();
             //services.AddTransient(typeof(IPageableRepository<,>), typeof(PageableRepository<,>));
 
         }

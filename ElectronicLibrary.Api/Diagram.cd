@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ElectronicBookingSystem.Api.Controllers.AddressController">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\AddressController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.Api.Controllers.BaseController">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIABACAAAAAAEAAAAAAAAEAAAAAAAAAAAAABAEAAAAA=</HashCode>
+      <FileName>Controllers\BaseController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_mediator" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ElectronicLibrary.Api.Controllers.BookingController">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAQAAAAAAAAAAAAAAAAAECAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\BookingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Api.Controllers.CategoryController">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAACAAAAABAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\CategoryController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.Api.Controllers.DecorationController">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAgCAAAAABAAAAAAAAAAAEAAAAAAAAAAAIA=</HashCode>
+      <FileName>Controllers\DecorationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.Api.Controllers.EquipmentController">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAgSAAAAAAAAAAAAAAAAAEAAAAAAAAAAAIA=</HashCode>
+      <FileName>Controllers\EquipmentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.Api.Controllers.FileController">
+    <Position X="5.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Controllers\FileController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Api.Controllers.IdentityController">
+    <Position X="8" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\IdentityController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicBookingSystem.Api.Controllers.OpinionController">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAEAAAAAEAAAAAAA=</HashCode>
+      <FileName>Controllers\OpinionController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.Api.Controllers.RoomController" Collapsed="true">
+    <Position X="5.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAIAAAAAAAAAABAAAAAAAAAEAEAAAAAAAAAAAIA=</HashCode>
+      <FileName>Controllers\RoomController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.Api.Controllers.ServiceController">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAASAAAAAAAAAAAAAAAAAEAAAAAAAAAAAIA=</HashCode>
+      <FileName>Controllers\ServiceController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.Api.Controllers.UserController">
+    <Position X="2" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIE=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MediatR.IMediator">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ElectronicBookingSystem.Infrastructure.Interfaces;
+using ElectronicBookingSystem.Application.Hubs;
+using ElectronicBookingSystem.Application.Decorators;
+using Microsoft.AspNetCore.SignalR;
 
 namespace ElectronicLibrary.Application.CQRS.User.Commands
 {
@@ -21,11 +24,12 @@ namespace ElectronicLibrary.Application.CQRS.User.Commands
         private readonly IRepository<ElectronicBookingSystem.Domain.Entities.Role> _roleRepository;
         private readonly IEmailSender _emailSender;
         private readonly IInlineEmailMessageService _inlineEmailMessageService;
+        private readonly IHubContext<NotificationHub> _hub;
 
         public RegisterUserCommandHandler(IRepository<ElectronicBookingSystem.Domain.Entities.User> userRepository, IMapper mapper, 
             IPasswordHasher<ElectronicBookingSystem.Domain.Entities.User> passwordHasher, 
             IRepository<ElectronicBookingSystem.Domain.Entities.Role> roleRepository, IEmailSender emailSender,
-            IInlineEmailMessageService inlineEmailMessageService) 
+            IInlineEmailMessageService inlineEmailMessageService, IHubContext<NotificationHub> hub) 
         {
             _userRepository = userRepository;
             _mapper = mapper;
@@ -33,6 +37,7 @@ namespace ElectronicLibrary.Application.CQRS.User.Commands
             _roleRepository = roleRepository;
             _emailSender = emailSender;
             _inlineEmailMessageService = inlineEmailMessageService;
+            _hub = hub;
         }
 
         public async Task<Unit> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
@@ -42,8 +47,12 @@ namespace ElectronicLibrary.Application.CQRS.User.Commands
             entity.PasswordHash = _passwordHasher.HashPassword(entity, request.Password);
             entity.RoleId = role.Id;
             await _userRepository.Save(entity);
-            await _emailSender.SendEmailAsync(entity.Email,$"Założenie konta na adres: {request.Email}",await _inlineEmailMessageService.GetHtmlRegisterMessage(request.Email));
+            await HandleNotification(entity.Email);
             return default;
         }
+
+        public async Task HandleNotification(string email) =>
+            await new EmailDecorator(new EmailHandler(email, $"Założenie konta na adres: {email}", await _inlineEmailMessageService.GetHtmlRegisterMessage(email), _emailSender), _hub).Notify();
+        
     }
 }
