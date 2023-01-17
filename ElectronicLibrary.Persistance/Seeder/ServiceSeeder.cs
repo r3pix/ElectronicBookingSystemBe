@@ -17,19 +17,13 @@ namespace ElectronicBookingSystem.Persistance.Seeder
             _serviceProvider = serviceProvider;
         }
 
-        public async Task Seed()
+        public static async Task Seed(ElectronicBookingSystemDbContext context)
         {
-            using (var scope = _serviceProvider.CreateAsyncScope())
-            {
-                var _dbContext = scope.ServiceProvider.GetRequiredService<ElectronicBookingSystemDbContext>();
-
-                if(!await _dbContext.Services.AnyAsync())
-                {
-                    await _dbContext.Services.AddRangeAsync(new List<Service>
+            await context.Services.AddRangeAsync(new List<Service>
                     {
                         new Service
                         {
-                             Name = "Serwis podstawowy",
+                            Name = "Serwis podstawowy",
                              Cost = 1000,
                              CreateDate = DateTime.UtcNow,
                              CreateEmail = "system@com.pl",
@@ -83,7 +77,18 @@ namespace ElectronicBookingSystem.Persistance.Seeder
                              LMEmail = "system@com.pl"
                         },
                     });
-                    await _dbContext.SaveChangesAsyncWithoutUser();
+            await context.SaveChangesAsyncWithoutUser();
+        }
+
+        public async Task Seed()
+        {
+            using (var scope = _serviceProvider.CreateAsyncScope())
+            {
+                var _dbContext = scope.ServiceProvider.GetRequiredService<ElectronicBookingSystemDbContext>();
+
+                if(!await _dbContext.Services.AnyAsync())
+                {
+                    await Seed(_dbContext);
                 }
             }
         }

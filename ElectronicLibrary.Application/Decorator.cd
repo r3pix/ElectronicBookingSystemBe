@@ -1,18 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ElectronicBookingSystem.Application.Decorators.EmailDecorator">
-    <Position X="2.5" Y="2" Width="1.5" />
+    <Position X="2.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAACAAAAAAAAAAAABAAAAAAAAQAAA=</HashCode>
       <FileName>Decorators\EmailDecorator.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_baseObject" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ElectronicBookingSystem.Application.Decorators.NotificationDecorator">
-    <Position X="5" Y="2" Width="1.75" />
+    <Position X="5" Y="2.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>Decorators\NotificationDecorator.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="baseObject" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ElectronicBookingSystem.Application.Decorators.NotificationHandler">
     <Position X="6" Y="0.5" Width="1.5" />
@@ -22,7 +28,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ElectronicBookingSystem.Application.Decorators.EmailHandler">
-    <Position X="7.25" Y="2" Width="1.5" />
+    <Position X="8" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAiAAAAAAAIAAAAAAAAAAAABAAAAAAAAAAIA=</HashCode>
       <FileName>Decorators\EmailHandler.cs</FileName>

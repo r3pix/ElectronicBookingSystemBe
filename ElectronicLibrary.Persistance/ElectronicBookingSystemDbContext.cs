@@ -65,6 +65,11 @@ namespace ElectronicLibrary.Persistance
                 
         }
 
+        public ElectronicBookingSystemDbContext(DbContextOptions<ElectronicBookingSystemDbContext> options) : base(options)
+        {
+
+        }
+
         public ElectronicBookingSystemDbContext(DbContextOptions<ElectronicBookingSystemDbContext> options, ICurrentUserService currentUserService) : base(options)
         {
             _currentUserService = currentUserService;

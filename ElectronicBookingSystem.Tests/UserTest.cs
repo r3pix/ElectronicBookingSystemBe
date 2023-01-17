@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ElectronicBookingSystem.Application.CQRS.User.Querries;
+using ElectronicBookingSystem.Application.Hubs;
 using ElectronicBookingSystem.Domain.Entities;
 using ElectronicBookingSystem.Infrastructure.Interfaces;
 using ElectronicBookingSystem.Infrastructure.Models;
@@ -10,6 +11,7 @@ using ElectronicLibrary.Application.Profiles;
 using ElectronicLibrary.Application.Repositories;
 using ElectronicLibrary.Persistance;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Moq;
@@ -48,6 +50,7 @@ namespace ElectronicBookingSystem.Tests
             var appData = _config.GetSection("AppData").Get<AppData>();
             var emailSender = new EmailSender(emailConfiguration);
             var inlineMessageService = new InlineEmailMessageService(dbContext, appData);
+            var mockHub = new Mock<IHubContext<NotificationHub>>();
             //act
             if (!await dbContext.Roles.AnyAsync())
                 await dbContext.Roles.AddRangeAsync(InMemorySeeds.GetMockedRoleSet());
@@ -65,7 +68,7 @@ namespace ElectronicBookingSystem.Tests
                 Street = "Test"
             };
 
-            var commandHandler = new RegisterUserCommandHandler(repository, mapper, passwordHasher, roleRepository, emailSender, inlineMessageService);
+            var commandHandler = new RegisterUserCommandHandler(repository, mapper, passwordHasher, roleRepository, emailSender, inlineMessageService, mockHub.Object);
             await commandHandler.Handle(command, CancellationToken.None);
             //assert
 

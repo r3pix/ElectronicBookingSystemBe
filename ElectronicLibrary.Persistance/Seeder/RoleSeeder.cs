@@ -1,5 +1,6 @@
 ﻿using ElectronicBookingSystem.Domain.Entities;
 using ElectronicLibrary.Persistance;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,16 @@ namespace ElectronicBookingSystem.Persistance.Seeder
             _serviceProvider = serviceProvider; //kiwka bo async
         }
 
+        public static async Task Seed(ElectronicBookingSystemDbContext context)
+        {
+            await context.Roles.AddRangeAsync(new Role[]
+                    {
+                        new Role { Name = "Admin", CreateDate = DateTime.UtcNow, LMDate = DateTime.UtcNow, CreateEmail = "system", LMEmail = "system" },
+                        new Role { Name = "User", CreateDate = DateTime.UtcNow, LMDate = DateTime.UtcNow, CreateEmail = "system", LMEmail = "system" }
+                    });
+            await context.SaveChangesAsyncWithoutUser();
+        }
+
         public async Task Seed()
         {
             using (var scope = _serviceProvider.CreateAsyncScope())
@@ -26,12 +37,7 @@ namespace ElectronicBookingSystem.Persistance.Seeder
 
                 if (!_dbContext.Roles.Any())
                 {
-                    await _dbContext.Roles.AddRangeAsync(new Role[]
-                    {
-                        new Role { Name = "Admin", CreateDate = DateTime.UtcNow, LMDate = DateTime.UtcNow, CreateEmail = "system", LMEmail = "system" },
-                        new Role { Name = "User", CreateDate = DateTime.UtcNow, LMDate = DateTime.UtcNow, CreateEmail = "system", LMEmail = "system" }
-                    });
-                    await _dbContext.SaveChangesAsyncWithoutUser();
+                    await Seed(_dbContext);
                 }
             }
         }

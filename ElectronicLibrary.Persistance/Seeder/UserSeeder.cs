@@ -19,6 +19,45 @@ namespace ElectronicBookingSystem.Persistance.Seeder
             _service = service;
         }
 
+        public static async Task Seed(ElectronicBookingSystemDbContext context)
+        {
+            await context.Users.AddRangeAsync(
+                       new User
+                       {
+                           Email = "admin@com.pl",
+                           PasswordHash = "AQAAAAEAACcQAAAAEBaEMPUzQ5i1WkTaZ0VMolEIb0TO8Nq2dKV7shMJOMAYYLPyCRRb31ulzwF0lr4rAA==",
+                           RoleId = (await context.Roles.FirstOrDefaultAsync(x => x.Name == "Admin")).Id,
+                           Address = new Address
+                           {
+                               City = "Kielce",
+                               CreateDate = DateTime.UtcNow,
+                               LMDate = DateTime.UtcNow,
+                               CreateEmail = "system@com.pl",
+                               LMEmail = "system@com.pl",
+                               IsActive = true,
+                               Number = "36",
+                               PostalCode = "26-556",
+                               Street = "Mała"
+                           },
+                           Identity = new Identity
+                           {
+                               CreateDate = DateTime.UtcNow,
+                               LMDate = DateTime.UtcNow,
+                               CreateEmail = "system@com.pl",
+                               LMEmail = "system@com.pl",
+                               Name = "Super",
+                               LastName = "Admin",
+                               IsActive = true
+                           },
+                           CreateDate = DateTime.UtcNow,
+                           LMDate = DateTime.UtcNow,
+                           IsActive = true,
+                           CreateEmail = "system@com.pl",
+                           LMEmail = "system@com.pl"
+                       });
+            await context.SaveChangesAsyncWithoutUser();
+        }
+
         public async Task Seed()
         {
             using (var scope = _service.CreateAsyncScope())
@@ -27,41 +66,7 @@ namespace ElectronicBookingSystem.Persistance.Seeder
                 
                 if(!await _dbContext.Users.AnyAsync())
                 {
-                    await _dbContext.Users.AddRangeAsync(
-                        new User
-                        {
-                            Email = "admin@com.pl",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBaEMPUzQ5i1WkTaZ0VMolEIb0TO8Nq2dKV7shMJOMAYYLPyCRRb31ulzwF0lr4rAA==",
-                            RoleId = (await _dbContext.Roles.FirstOrDefaultAsync(x=>x.Name == "Admin")).Id,
-                            Address = new Address
-                            {
-                                City = "Kielce",
-                                CreateDate = DateTime.UtcNow,
-                                LMDate = DateTime.UtcNow,
-                                CreateEmail = "system@com.pl",
-                                LMEmail = "system@com.pl",
-                                IsActive = true,
-                                Number = "36",
-                                PostalCode = "26-556",
-                                Street = "Mała"
-                            },
-                            Identity = new Identity
-                            {
-                                CreateDate = DateTime.UtcNow,
-                                LMDate = DateTime.UtcNow,
-                                CreateEmail = "system@com.pl",
-                                LMEmail = "system@com.pl",
-                                Name = "Super",
-                                LastName = "Admin",
-                                IsActive = true
-                            },
-                            CreateDate = DateTime.UtcNow,
-                            LMDate = DateTime.UtcNow,
-                            IsActive = true,
-                            CreateEmail = "system@com.pl",
-                            LMEmail = "system@com.pl"
-                    });
-                    await _dbContext.SaveChangesAsyncWithoutUser();
+                    await Seed(_dbContext);
                 }
             }
         }

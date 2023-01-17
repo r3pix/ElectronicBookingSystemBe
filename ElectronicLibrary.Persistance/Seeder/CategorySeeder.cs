@@ -16,15 +16,9 @@ namespace ElectronicBookingSystem.Persistance.Seeder
             _serviceProvider = serviceProvider;
         }
 
-        public async Task Seed()
+        public static async Task Seed(ElectronicBookingSystemDbContext context)
         {
-            using (var scope = _serviceProvider.CreateAsyncScope())
-            {
-                var _dbContext = scope.ServiceProvider.GetRequiredService<ElectronicBookingSystemDbContext>();
-
-                if(!await _dbContext.Categories.AnyAsync())
-                {
-                    await _dbContext.Categories.AddRangeAsync(new System.Collections.Generic.List<Category>
+            await context.Categories.AddRangeAsync(new System.Collections.Generic.List<Category>
                     {
                         new Category
                         {
@@ -72,7 +66,18 @@ namespace ElectronicBookingSystem.Persistance.Seeder
                             LMEmail = "system@com.pl"
                         }
                     });
-                    await _dbContext.SaveChangesAsyncWithoutUser();
+            await context.SaveChangesAsyncWithoutUser();
+        }
+
+        public async Task Seed()
+        {
+            using (var scope = _serviceProvider.CreateAsyncScope())
+            {
+                var _dbContext = scope.ServiceProvider.GetRequiredService<ElectronicBookingSystemDbContext>();
+
+                if(!await _dbContext.Categories.AnyAsync())
+                {
+                    await Seed(_dbContext);
                 }
 
             }
